@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.send('respond with a resource');
+router.get('/', (req, res) => {
+  res.render('index', { name: "Alan", balance: 150000, point: 2500 });
 });
 
 router.get('/login', (req, res) => {
