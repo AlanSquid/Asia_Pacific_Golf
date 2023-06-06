@@ -4,13 +4,13 @@
     <h4>會員預約系統</h4>
   </div>
   <div class="img border border-dark rounded-circle mt-3 m-auto" style="width: 10rem;height: 10rem;">
-    <img src="..." class="rounded-circle" alt="...">
+    <img src="..." class="rounded-circle" style="width: 10rem;height: 10rem;" alt="...">
     <h1 class="text-center">Logo</h1>
   </div>
-  <form action="/users/login" method="POST">
+  <form action="/members/login" method="POST">
     <div class="d-flex flex-column align-items-center mt-3">
       <h3 class="text-center mt-3">請輸入身分證號碼</h3>
-      <input type="account" id="account" name="account" class="form-control mb-3" placeholder="請輸入身分證字號"
+      <input type="text" id="personal_id" name="personal_id" class="form-control mb-3" placeholder="請輸入身分證字號"
         style="width: 18rem;">
       <button type="submit" class="btn btn-primary mb-3" style="width: 18rem;">送出</button>
     </div>
