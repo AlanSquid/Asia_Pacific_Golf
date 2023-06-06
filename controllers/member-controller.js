@@ -10,6 +10,20 @@ const memberController = {
   getMemberArea: (req, res, next) => {
     res.render('area')
   },
+  getReservationHistories: (req, res, next) => {
+    res.render('histories')
+  },
+
+  getNoHitReservations: (req, res, next) => {
+    res.render('noHit')
+  },
+  getDetails: (req, res, next) => {
+    res.render('details')
+  },
+
+  getMemberGifts: (req, res, next) => {
+    res.render('gifts')
+  },
 
   getReservation: (req, res, next) => {
     res.render('reservation')
