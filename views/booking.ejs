@@ -1,1 +1,52 @@
-<h1>booking</h1>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 col-md-8 m-auto">
+      <div class="d-flex align-items-center justify-content-between">
+        <h6 class="mt-4">會員: <%= name %>
+        </h6>
+        <h1>協助訂場</h1>
+        <button class="btn btn-secondary d-flex align-items-center justify-content-center" style="white-space:nowrap"
+          onclick="history.back()">回上頁</button>
+      </div>
+    </div>
+  </div>
+  <a href="/reservations/booking" class="d-grid btn btn-primary mt-3 m-auto" style="max-width: 45rem;">
+    <h5>新增訂場</h5>
+  </a>
+  <div class="table mt-3"></div>
+  <table id="myTable" class="display">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>日期</th>
+        <th>球場</th>
+        <th>開球時間_起</th>
+        <th>開球時間_迄</th>
+        <th>球隊</th>
+        <th>組數</th>
+        <th>名單</th>
+        <th>聯絡人</th>
+        <th>聯絡人電話</th>
+        <th>狀態</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('#myTable').DataTable({
+      // 中文化
+
+    });
+  });
+</script>
+
+<script>
+
+</script>

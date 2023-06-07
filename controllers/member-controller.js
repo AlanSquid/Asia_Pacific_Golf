@@ -1,16 +1,16 @@
 const memberController = {
-  getMember: (req, res, next) => {
-    res.render('members', { name: "Alan", balance: 150000, point: 2500 })
-  },
-
-  login: (req, res, next) => {
+  getLogin: (req, res, next) => {
     res.render('login')
   },
 
-  getMemberArea: (req, res, next) => {
-    res.render('areas')
+  getIndex: (req, res, next) => {
+    res.render('index', { name: "Alan", balance: 150000, point: 2500 })
   },
-  getMemberorders: (req, res, next) => {
+
+  getMemberArea: (req, res, next) => {
+    res.render('members')
+  },
+  getMemberOrders: (req, res, next) => {
     res.render('orders', { name: 'Alan ' })
   },
 
@@ -30,7 +30,8 @@ const memberController = {
   },
 
   getReservationBooking: (req, res, next) => {
-    res.render('booking')
+
+    res.render('booking', { name: 'Alan' })
   },
 
   getAddBooking: (req, res, next) => {
