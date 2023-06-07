@@ -1,0 +1,43 @@
+<div class="card card-body border-dark">
+  <div class="row">
+    <div class="col-4">
+      <h6 class="mt-2">會員: <%= name %>
+      </h6>
+    </div>
+    <div class="col-4 text-center">
+      <h3>訂場紀錄</h3>
+    </div>
+    <div class="col-4 ">
+      <div class="d-flex flex-row-reverse">
+        <button type="submit" class="btn btn-secondary" style="width: 5rem; height: 2rem;"
+          onclick="history.back()">回上頁</button>
+      </div>
+    </div>
+  </div>
+  <table class="table table-bordered border-dark mt-3">
+    <thead class="table-secondary border-dark">
+      <tr>
+        <th scope="col">會員編號</th>
+        <th scope="col">姓名</th>
+        <th scope="col">日期</th>
+        <th scope="col">球場</th>
+        <th scope="col">開球時間</th>
+        <th scope="col">球隊</th>
+        <th scope="col">組數</th>
+        <th scope="col">訂場狀態</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">會員編號</th>
+        <td>姓名</td>
+        <td>日期</td>
+        <td>球場</td>
+        <td>開球時間</td>
+        <td>球隊</td>
+        <td>組數</td>
+        <td>訂場狀態</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

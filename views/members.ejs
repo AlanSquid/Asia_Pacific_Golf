@@ -1,0 +1,41 @@
+<div class="container h-100" style="outline:1px solid red">
+  <div class="row">
+    <div class="col-10 col-md-8 m-auto">
+      <div class=" m-auto">
+        <form action="/members" method="POST" class="d-flex flex-row-reverse">
+          <button type="submit" class="btn btn-primary" style="width: 5rem">登出</button>
+        </form>
+        <div class="container text-center mt-3">
+          <div class="row">
+            <div class="col-12 m-auto">
+              <div class="card card-body border-dark m-auto">
+                <h1>
+                  <%= name %>
+                </h1>
+                <div class="mt-5 d-flex justify-content-around">
+                  <p><i class="bi bi-coin"></i>餘額: <%= balance %>
+                  </p>
+                  <p><i class="bi bi-record-circle-fill"></i>點數: <%= point %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5" style="outline:1px solid red">
+            <div class="col m-auto" style="outline:1px solid blue">
+              <a href="/members/reservations" class="btn btn-secondary" style="width: 40%; height:6rem">
+                <h4>我要預約</h4>
+              </a>
+            </div>
+            <div class="col m-auto">
+              <a href="/members/areas" class="btn btn-secondary" style="width: 40%; height:6rem">
+                <h4>會員專區</h4>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

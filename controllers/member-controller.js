@@ -1,6 +1,6 @@
 const memberController = {
   getMember: (req, res, next) => {
-    res.render('index', { name: "Alan", balance: 150000, point: 2500 })
+    res.render('members', { name: "Alan", balance: 150000, point: 2500 })
   },
 
   login: (req, res, next) => {
@@ -8,17 +8,17 @@ const memberController = {
   },
 
   getMemberArea: (req, res, next) => {
-    res.render('area')
+    res.render('areas')
   },
-  getReservationHistories: (req, res, next) => {
-    res.render('histories')
+  getMemberorders: (req, res, next) => {
+    res.render('orders', { name: 'Alan ' })
   },
 
-  getNoHitReservations: (req, res, next) => {
-    res.render('noHit')
+  getMemberBooked: (req, res, next) => {
+    res.render('booked-orders')
   },
-  getDetails: (req, res, next) => {
-    res.render('details')
+  getMemberLogs: (req, res, next) => {
+    res.render('logs')
   },
 
   getMemberGifts: (req, res, next) => {
@@ -29,13 +29,30 @@ const memberController = {
     res.render('reservation')
   },
 
-  getReservationChecks: (req, res, next) => {
-    res.render('check')
+  getReservationBooking: (req, res, next) => {
+    res.render('booking')
   },
 
-  getReservationAssist: (req, res, next) => {
-    res.render('assist')
-  }
+  getAddBooking: (req, res, next) => {
+    res.render('add-booking')
+  },
+
+  postAddBooking: (req, res, next) => {
+
+  },
+
+  getReservationChecks: (req, res, next) => {
+    res.render('checks')
+  },
+
+  getAddChecks: (req, res, next) => {
+    res.render('add-checks')
+  },
+
+  postAddChecks: (req, res, next) => {
+
+  },
+
 }
 
 module.exports = memberController
