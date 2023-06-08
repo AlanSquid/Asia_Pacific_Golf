@@ -14,7 +14,7 @@
     <h5>新增訂場</h5>
   </a>
   <div class="table mt-3"></div>
-  <table id="myTable" class="display">
+  <table id="myTable" class="display responsive nowrap" style="width: 80%;">
     <thead>
       <tr>
         <th>姓名</th>
@@ -33,6 +33,16 @@
     <tbody>
       <tr>
         <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -42,7 +52,17 @@
   $(document).ready(function () {
     $('#myTable').DataTable({
       // 中文化
-
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
+      },
+      // 分頁器
+      paging: false,
+      // 滾軸頁面
+      scrollY: 400,
+      // 關鍵字搜尋
+      searching: false,
+      // 排序
+      ordering: false
     });
   });
 </script>
