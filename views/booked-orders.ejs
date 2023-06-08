@@ -1,17 +1,23 @@
 <div class="container mt-3">
-  <div class="row">
-    <div class="col-12 col-md-8 m-auto">
-      <div class="d-flex align-items-center justify-content-between">
-        <h6 class="mt-4">會員: <%= name %>
+  <div class="row text-center h-100">
+    <div class="col-3 pt-5">
+      <div class="item d-flex justify-content-center align-items-center">
+        <h6 class="text-nowrap">會員: <%= name %>
         </h6>
-        <h1>未擊球預約<h1>
-            <button class="btn btn-secondary d-flex align-items-center justify-content-center"
-              style="white-space:nowrap" onclick="history.back()">回上頁</button>
+      </div>
+    </div>
+    <div class="col-6 pt-3">
+      <h3>未擊球預約</h3>
+    </div>
+    <div class="col-3">
+      <div class="item d-flex flex-column" style="max-width: 6rem;">
+        <button class="btn btn-secondary mb-2 text-nowrap" style="width: 8vw; min-width: 5rem;"
+          onclick="history.back()">回上頁</button>
       </div>
     </div>
   </div>
 
-  <table id="myTable" class="display responsive nowrap" style="width: 80%;">
+  <table id="myTable" class="display cell-border responsive nowrap" style="width: 80%;">
     <thead>
       <tr>
         <th>會員編號</th>
