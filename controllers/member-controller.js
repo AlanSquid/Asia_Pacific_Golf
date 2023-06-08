@@ -14,15 +14,15 @@ const memberController = {
     res.render('orders', { name: 'Alan ' })
   },
 
-  getMemberBooked: (req, res, next) => {
-    res.render('booked-orders')
+  getMemberBookedOrder: (req, res, next) => {
+    res.render('booked-orders', { name: 'Alan' })
   },
   getMemberLogs: (req, res, next) => {
-    res.render('logs')
+    res.render('logs', { name: 'Alan', balance: 15000 })
   },
 
   getMemberGifts: (req, res, next) => {
-    res.render('gifts')
+    res.render('gifts', { balance: 15000, gift: 2 })
   }
 
 }

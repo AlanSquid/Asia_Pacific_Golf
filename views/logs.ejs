@@ -1,1 +1,63 @@
-<h1>logs</h1>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-3 col-md-5 pt-3">
+      <h6 style="white-space:nowrap">會員: <%= name %>
+      </h6>
+      <h6>錢包餘額: <%= balance %>
+      </h6>
+    </div>
+    <div class="col-6 col-md-6 pt-3">
+      <h5 style="white-space:nowrap">會員擊球及扣款明細</h5>
+    </div>
+    <div class="col-3 col-md-1">
+      <button class="btn btn-secondary d-flex align-items-center justify-content-center" style="white-space:nowrap"
+        onclick="history.back()">回上頁</button>
+    </div>
+  </div>
+
+  <table id="myTable" class="display responsive nowrap" style="width: 80%;">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>日期</th>
+        <th>星期</th>
+        <th>球場</th>
+        <th>球隊</th>
+        <th>金額</th>
+        <th>小記</th>
+        <th>備註</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('#myTable').DataTable({
+      // 中文化
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
+      },
+      // 分頁器
+      paging: false,
+      // 滾軸頁面
+      scrollY: 400,
+      // 關鍵字搜尋
+      searching: false,
+      // 排序
+      ordering: false
+    });
+  });
+</script>

@@ -16,7 +16,7 @@ const reservationController = {
   },
 
   getReservationChecks: (req, res, next) => {
-    res.render('checks')
+    res.render('checks', { name: 'Alan' })
   },
 
   getAddChecks: (req, res, next) => {
