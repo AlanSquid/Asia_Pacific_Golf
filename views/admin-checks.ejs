@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="col-6 pt-3">
-          <h2>協助訂場</h2>
+          <h2>已訂場需結帳</h2>
         </div>
         <div class="col-3">
           <div class="item d-flex flex-column">
@@ -59,14 +59,9 @@
         <label for="team" class="form-label">球隊</label>
         <input type="text" class="form-control" id="team">
       </div>
-      <!-- 聯絡人 -->
-      <div class="col-6 col-sm-4 col-md-3">
-        <label for="contact_person" class="form-label">聯絡人</label>
-        <input type="text" class="form-control" id="contact_person">
-      </div>
       <!-- 狀態 下拉式 -->
       <div class="col-6 col-sm-4 col-md-3">
-        <label for="contact_person" class="form-label">狀態</label>
+        <label for="contact_person" class="form-label">結帳狀態</label>
         <select class="form-select" aria-label="state">
           <option selected>Open this select menu</option>
           <option value="1">One</option>
@@ -76,14 +71,12 @@
       </div>
     </div>
     <a href="/admin/booking/" class="d-grid btn btn-primary mt-3 m-auto">
-      <h5>訂單查詢</h5>
+      <h5>查詢</h5>
+    </a>
+    <a href="/admin/booking/new" class="d-grid btn btn-primary mt-3 mb-2  m-auto">
+      <h5>新增已訂場需結帳</h5>
     </a>
   </form>
-  
-  <a href="/admin/booking/new" class="d-grid btn btn-primary mt-3 mb-2  m-auto">
-    <h5>新增訂單</h5>
-  </a>
-
   <table id="myTable" class="display cell-border responsive nowrap" style="width: 100%;">
     <thead>
       <tr>
@@ -91,20 +84,16 @@
         <th>姓名</th>
         <th>日期</th>
         <th>球場</th>
-        <th>開球時間_起</th>
-        <th>開球時間_迄</th>
+        <th>開球時間</th>
         <th>球隊</th>
-        <th>組數</th>
-        <th>名單</th>
-        <th>聯絡人</th>
-        <th>訂場狀態</th>
+        <th>結帳名單</th>
+        <th>結帳狀態</th>
+        <th>備註</th>
         <th>編輯</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td></td>
-        <td></td>
         <td></td>
         <td></td>
         <td></td>

@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="col-6 pt-3">
-          <h2>協助訂場</h2>
+          <h2>預約資訊整理</h2>
         </div>
         <div class="col-3">
           <div class="item d-flex flex-column">
@@ -59,29 +59,24 @@
         <label for="team" class="form-label">球隊</label>
         <input type="text" class="form-control" id="team">
       </div>
-      <!-- 聯絡人 -->
+      <!-- 球場結帳總額 -->
       <div class="col-6 col-sm-4 col-md-3">
-        <label for="contact_person" class="form-label">聯絡人</label>
-        <input type="text" class="form-control" id="contact_person">
+        <label for="course_total" class="form-label">球場結帳總額</label>
+        <input type="number" class="form-control" id="course_total">
       </div>
-      <!-- 狀態 下拉式 -->
+      <!-- 會員扣款總額 -->
       <div class="col-6 col-sm-4 col-md-3">
-        <label for="contact_person" class="form-label">狀態</label>
-        <select class="form-select" aria-label="state">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <label for="member_total" class="form-label">會員扣款總額</label>
+        <input type="number" class="form-control" id="member_total">
       </div>
     </div>
-    <a href="/admin/booking/" class="d-grid btn btn-primary mt-3 m-auto">
-      <h5>訂單查詢</h5>
+    <a href="/admin/summary/" class="d-grid btn btn-primary mt-3 m-auto">
+      <h5>查詢</h5>
     </a>
   </form>
-  
-  <a href="/admin/booking/new" class="d-grid btn btn-primary mt-3 mb-2  m-auto">
-    <h5>新增訂單</h5>
+
+  <a href="/admin/summary/new" class="d-grid btn btn-primary mt-3 mb-2  m-auto">
+    <h5>新增預約資料整理</h5>
   </a>
 
   <table id="myTable" class="display cell-border responsive nowrap" style="width: 100%;">
@@ -90,21 +85,17 @@
         <th>會員編號</th>
         <th>姓名</th>
         <th>日期</th>
+        <th>星期</th>
         <th>球場</th>
-        <th>開球時間_起</th>
-        <th>開球時間_迄</th>
+        <th>開球時間</th>
         <th>球隊</th>
-        <th>組數</th>
-        <th>名單</th>
-        <th>聯絡人</th>
-        <th>訂場狀態</th>
+        <th>球場結帳價格</th>
+        <th>會員扣款金額</th>
         <th>編輯</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td></td>
-        <td></td>
         <td></td>
         <td></td>
         <td></td>

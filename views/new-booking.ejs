@@ -1,8 +1,10 @@
 <div class="container mt-3">
   <div class="row flex-row-reverse">
     <div class="col-3 col-md-1">
-      <button class="btn btn-secondary d-flex align-items-center justify-content-center text-nowrap"
-        style="width: 8vw; min-width: 5rem;" onclick="history.back()">回上頁</button>
+      <div class="item d-flex flex-column" style="max-width: 6rem;">
+        <button class="btn btn-secondary mb-2 text-nowrap" style="width: 8vw; min-width: 5rem;"
+          onclick="history.back()">回上頁</button>
+      </div>
     </div>
   </div>
 
@@ -13,12 +15,12 @@
         <!-- 日期 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="date">日期:</span>
-          <input type="date" class="form-control" aria-label="date" aria-describedby="date">
+          <input type="date" class="form-control" aria-label="date" aria-describedby="date" required>
         </div>
         <!-- 球場 下拉式選單 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="course">球場</span>
-          <select class="form-select" aria-label="course">
+          <select class="form-select" aria-label="course" required>
             <option selected>Open this select menu</option>
             <option value="1">One</option>
             <option value="2">Two</option>
@@ -28,37 +30,47 @@
         <!-- 開球時間 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">開球時間</span>
-          <input type="time" class="form-control" aria-label="game_begin">
+          <input type="time" class="form-control" aria-label="game_begin" required>
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">結束時間</span>
-          <input type="time" class="form-control" aria-label="game_begin">
+          <input type="time" class="form-control" aria-label="game_begin" required>
         </div>
 
         <!-- 球隊 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="team">球隊</span>
-          <input type="text" class="form-control" aria-label="team" aria-describedby="team">
+          <input type="text" class="form-control" aria-label="team" aria-describedby="team" required>
         </div>
         <!-- 組數 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="group">組數</span>
-          <input type="text" class="form-control" aria-label="group" aria-describedby="group">
+          <input type="text" class="form-control" aria-label="group" aria-describedby="group" required>
         </div>
         <!-- 名單 -->
         <div class="input-group mb-3">
           <span class="input-group-text">名單</span>
-          <textarea class="form-control" aria-label="list" style="height: 13vh;"></textarea>
+          <textarea class="form-control" aria-label="list" style="height: 13vh;" required></textarea>
         </div>
         <!-- 聯絡人 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="contact_person">聯絡人</span>
-          <input type="text" class="form-control" aria-label="contact_person" aria-describedby="contact_person">
+          <input type="text" class="form-control" aria-label="contact_person" aria-describedby="contact_person"
+            required>
         </div>
-        <!-- 聯絡人電話 -->
+        <!-- 電話 -->
         <div class="input-group mb-3">
-          <span class="input-group-text" id="phone">聯絡人電話</span>
-          <input type="phone" class="form-control" aria-label="phone" aria-describedby="phone">
+          <span class="input-group-text" id="phone">電話</span>
+          <input type="phone" class="form-control" aria-label="phone" aria-describedby="phone" required>
+        </div>
+
+        <div class="submit-back d-flex justify-content-end mb-3">
+          <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center text-nowrap"
+            style="width: 8vw; min-width: 5rem;">新增</button>
+
+          <button type="button"
+            class="ms-3 btn btn-secondary d-flex align-items-center justify-content-center text-nowrap"
+            style="width: 8vw; min-width: 5rem;" onclick="history.back()">關閉</button>
         </div>
       </form>
     </div>
