@@ -1,16 +1,21 @@
 <div class="container mt-3">
-  <div class="row flex-row-reverse">
-    <div class="col-3 col-md-1">
-      <div class="item d-flex flex-column" style="max-width: 6rem;">
-        <button class="btn btn-secondary mb-2 text-nowrap" style="width: 8vw; min-width: 5rem;"
-          onclick="history.back()">回上頁</button>
+  <div class="row m-auto">
+    <div class=" col m-auto">
+      <div class="row text-center h-100">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <h1>新增訂場</h1>
+        </div>
+        <div class="col-3">
+          <button class="btn btn-secondary mb-2 text-nowrap" style="width: 8vw; min-width: 5rem;"
+            onclick="history.back()">回上頁</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="row text-center">
+  <div class="row text-center mt-3">
     <div class="col-10 col-md-6 m-auto">
-      <h1 class="mb-3">協助訂場</h1>
       <form action="/reservations/booking" method="POST">
         <!-- 日期 -->
         <div class="input-group mb-3">
@@ -65,12 +70,10 @@
         </div>
 
         <div class="submit-back d-flex justify-content-end mb-3">
-          <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center text-nowrap"
-            style="width: 8vw; min-width: 5rem;">新增</button>
+          <button type="submit" class="btn btn-primary text-nowrap" style="width: 8vw; min-width: 5rem;">新增</button>
 
-          <button type="button"
-            class="ms-3 btn btn-secondary d-flex align-items-center justify-content-center text-nowrap"
-            style="width: 8vw; min-width: 5rem;" onclick="history.back()">關閉</button>
+          <button type="button" class="ms-3 btn btn-secondary text-nowrap" style="width: 8vw; min-width: 5rem;"
+            onclick="history.back()">關閉</button>
         </div>
       </form>
     </div>

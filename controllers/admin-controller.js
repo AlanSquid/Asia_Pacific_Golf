@@ -20,7 +20,7 @@ const adminController = {
   getAdminSummary: (req, res, next) => {
     res.render('summary', { name: 'Alan' })
   },
-  getAdminMembersInfo: (req, res, next) => {
+  getAdminMembers: (req, res, next) => {
     res.render('members-info', { name: 'Alan' })
   },
   getAdminCoursies: (req, res, next) => {
@@ -28,6 +28,9 @@ const adminController = {
   },
   getAdminLogs: (req, res, next) => {
     res.render('logs', { name: 'Alan' })
+  },
+  getNewMember: (req, res, next) => {
+    res.render('new-member', { name: 'Alan' })
   },
 }
 
