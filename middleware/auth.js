@@ -1,5 +1,10 @@
+// 檢查是否為登入狀態
 module.exports = {
   authenticator: (req, res, next) => {
-    res.render('login')
+    if (req.isAuthenticated()) {
+      return next()
+    }
+    // req.flash('warning_msg', '請先登入才能使用！')
+    res.redirect('/auth/login')
   }
 }

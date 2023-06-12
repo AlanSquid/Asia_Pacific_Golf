@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts')
+const usePassport = require('./config/passport')
+const session = require('express-session')
 
 const routes = require('./routes')
 
@@ -14,12 +16,22 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts)
 app.set('view engine', 'ejs');
 
+
+app.use(session({
+  // secret: process.env.SESSION_SECRET,
+  secret: "secret",
+  resave: false,
+  saveUninitialized: true
+}))
+
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+usePassport(app)
 app.use(routes)
 
 // catch 404 and forward to error handler

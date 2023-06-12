@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="col-6 pt-3">
-          <h2>球場資訊</h2>
+          <h2>會員好禮</h2>
         </div>
         <div class="col-3">
           <div class="item d-flex flex-column">
@@ -23,33 +23,33 @@
 
   <form action="/admin/booking" method="POST">
     <div class="row g-4 mt-1">
-      <!-- 球場編號 -->
-      <div class="col-12 col-sm-4">
-        <label for="member_id" class="form-label">會員編號</label>
+      <!-- 會員號碼 -->
+      <div class="col-6 col-sm-4 col-md-3">
+        <label for="member_id" class="form-label">會員號碼</label>
         <input type="text" class="form-control" id="member_id">
       </div>
-      <!-- 球場名稱 -->
-      <div class="col-12 col-sm-4">
+      <!-- 姓名 -->
+      <div class="col-6 col-sm-4 col-md-3">
         <label for="name" class="form-label">姓名</label>
         <input type="text" class="form-control" id="name">
       </div>
-
-      <a href="/admin/coursies/" class="d-grid btn btn-primary mt-3 m-auto">
-        <h5>球場查詢</h5>
-      </a>
+    </div>
+    <a href="/admin/gifts/" class="d-grid btn btn-primary mt-3 m-auto">
+      <h5>查詢</h5>
+    </a>
   </form>
 
-  <a href="/admin/coursies/new" class="d-grid btn btn-primary mt-3 mb-2  m-auto">
-    <h5>新增球場</h5>
+  <a href="/admin/gifts/new" class="d-grid btn btn-primary mt-3 mb-2  m-auto">
+    <h5>新增會員好禮</h5>
   </a>
 
-  <table id="myTable" class="display cell-border responsive nowrap" style="width: 100%;">
+  <table id="myTable" class="display cell-border responsive nowrap" style="width: 80%;">
     <thead>
       <tr>
-        <th>球場編號</th>
-        <th>球場名稱</th>
-        <th>上次存入金額</th>
-        <th>目前剩餘金額</th>
+        <th>會員號碼</th>
+        <th>姓名</th>
+        <th>點數</th>
+        <th>贈球(場)</th>
         <th>備註</th>
         <th>編輯</th>
       </tr>
@@ -62,7 +62,7 @@
         <td></td>
         <td></td>
         <td>
-          <a href="/admin/coursies/edit" class="btn btn-info">修改</a>
+          <a href="/admin/gifts/edit" class="btn btn-info">修改</a>
           <button class="btn btn-danger">刪除</button>
         </td>
       </tr>

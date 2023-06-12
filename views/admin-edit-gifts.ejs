@@ -1,0 +1,62 @@
+<div class="container mt-3">
+  <div class="row m-auto">
+    <div class=" col m-auto">
+      <div class="row text-center h-100">
+        <div class="col-3 pt-3">
+          <div class="item d-flex justify-content-center align-items-center">
+            <h5>管理員</h5>
+          </div>
+        </div>
+        <div class="col-6 pt-3">
+          <h2>修改會員好禮</h2>
+        </div>
+        <div class="col-3">
+          <div class="item d-flex flex-column">
+            <button class="btn btn-secondary mb-2 text-nowrap" style="width: 8vw; min-width: 5rem;"
+              onclick="history.back()">回上頁</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row text-center mt-3">
+    <div class="col-10 col-md-6 m-auto">
+      <form action="/admin/checks" method="POST">
+        <!-- 會員號碼 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="member_id">會員號碼</span>
+          <input type="text" class="form-control" aria-label="member_id" aria-describedby="member_id" required>
+        </div>
+        <!-- 姓名 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="name">姓名</span>
+          <input type="text" class="form-control" aria-label="name" aria-describedby="name" required>
+        </div>
+
+        <!-- 點數 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="point">點數</span>
+          <input type="number" class="form-control" aria-label="point" aria-describedby="point" required>
+        </div>
+        <!-- 贈球(場) -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="gift">贈球(場)</span>
+          <input type="number" class="form-control" aria-label="gift" aria-describedby="gift" required>
+        </div>
+        <!-- 備註 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text">備註</span>
+          <textarea class="form-control" aria-label="text" style="height: 13vh;"></textarea>
+        </div>
+
+        <div class="submit-back d-flex justify-content-end mb-3">
+          <button type="submit" class="btn btn-primary text-nowrap" style="width: 8vw; min-width: 5rem;">修改</button>
+
+          <button type="button" class="ms-3 btn btn-secondary text-nowrap" style="width: 8vw; min-width: 5rem;"
+            onclick="history.back()">關閉</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

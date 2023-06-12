@@ -1,0 +1,54 @@
+<div class="container mt-3">
+  <div class="row m-auto">
+    <div class=" col m-auto">
+      <div class="row text-center h-100">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <h1>新增球場資訊</h1>
+        </div>
+        <div class="col-3">
+          <button class="btn btn-secondary mb-2 text-nowrap" style="width: 8vw; min-width: 5rem;"
+            onclick="history.back()">回上頁</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row text-center mt-3">
+    <div class="col-10 col-md-6 m-auto">
+      <form action="/admin/members-info" method="POST">
+        <!-- 球場編號 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="course_id">球場編號</span>
+          <input type="text" class="form-control" aria-label="course_id" aria-describedby="course_id">
+        </div>
+        <!-- 球場名稱 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="course">球場名稱</span>
+          <input type="text" class="form-control" aria-label="course" aria-describedby="course">
+        </div>
+        <!-- 上次存入金額 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="add_value">上次存入金額</span>
+          <input type="number" class="form-control" aria-label="add_value" aria-describedby="add_value">
+        </div>
+        <!-- 目前剩餘金額 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="balance">目前剩餘金額</span>
+          <input type="number" class="form-control" aria-label="balance" aria-describedby="balance">
+        </div>
+        <!-- 備註 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text">備註</span>
+          <textarea class="form-control" aria-label="text" style="height: 13vh;"></textarea>
+        </div>
+        <div class="submit-back d-flex justify-content-end mb-3">
+          <button type="submit" class="btn btn-primary text-nowrap" style="width: 8vw; min-width: 5rem;">新增</button>
+
+          <button type="button" class="ms-3 btn btn-secondary text-nowrap" style="width: 8vw; min-width: 5rem;"
+            onclick="history.back()">關閉</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

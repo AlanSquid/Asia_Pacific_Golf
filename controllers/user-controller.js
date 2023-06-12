@@ -1,8 +1,4 @@
-const memberController = {
-  getLogin: (req, res, next) => {
-    res.render('login')
-  },
-
+const userController = {
   getIndex: (req, res, next) => {
     res.render('index', { name: "Alan", balance: 150000, point: 2500 })
   },
@@ -55,4 +51,4 @@ const memberController = {
 
 }
 
-module.exports = memberController
+module.exports = userController

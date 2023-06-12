@@ -1,9 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const memberController = require('../../controllers/member-controller')
+const userController = require('../../controllers/user-controller')
 
-router.get('/', memberController.getIndex)
-
+router.get('/', userController.getIndex)
 
 
 module.exports = router

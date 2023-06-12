@@ -1,0 +1,97 @@
+<div class="container mt-3">
+  <div class="row m-auto">
+    <div class=" col m-auto">
+      <div class="row text-center h-100">
+        <div class="col-3 pt-3">
+          <div class="item d-flex justify-content-center align-items-center">
+            <h5>管理員</h5>
+          </div>
+        </div>
+        <div class="col-6 pt-3">
+          <h2>新增預約資訊整理</h2>
+        </div>
+        <div class="col-3">
+          <div class="item d-flex flex-column">
+            <button class="btn btn-secondary mb-2 text-nowrap" style="width: 8vw; min-width: 5rem;"
+              onclick="history.back()">回上頁</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row text-center mt-3">
+    <div class="col-10 col-md-6 m-auto">
+      <form action="/admin/booking" method="POST">
+        <!-- 會員編號 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="member_id">會員編號</span>
+          <input type="text" class="form-control" aria-label="member_id" aria-describedby="member_id" required>
+        </div>
+        <!-- 姓名 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="name">姓名</span>
+          <input type="text" class="form-control" aria-label="name" aria-describedby="name" required>
+        </div>
+        <!-- 日期 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="date">日期</span>
+          <input type="date" class="form-control" aria-label="date" aria-describedby="date" required>
+        </div>
+        <!-- 星期 下拉式選單 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="weeks">星期</span>
+          <select class="form-select" aria-label="weeks" required>
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <!-- 球場 下拉式選單 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="course">球場</span>
+          <select class="form-select" aria-label="course" required>
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <!-- 開球時間 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">開球時間</span>
+          <input type="time" class="form-control" aria-label="game_begin" required>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">結束時間</span>
+          <input type="time" class="form-control" aria-label="game_begin" required>
+        </div>
+
+        <!-- 球隊 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="team">球隊</span>
+          <input type="text" class="form-control" aria-label="team" aria-describedby="team" required>
+        </div>
+        <!-- 球場結帳價格 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="course-price">球場結帳價格</span>
+          <input type="text" class="form-control" aria-label="course-price" aria-describedby="course-price" required>
+        </div>
+        <!-- 會員扣款金額 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="add_value">會員扣款金額</span>
+          <input type="text" class="form-control" aria-label="add_value" aria-describedby="add_value" required>
+        </div>
+
+
+        <div class="submit-back d-flex justify-content-end mb-3">
+          <button type="submit" class="btn btn-primary text-nowrap" style="width: 8vw; min-width: 5rem;">新增</button>
+
+          <button type="button" class="ms-3 btn btn-secondary text-nowrap" style="width: 8vw; min-width: 5rem;"
+            onclick="history.back()">關閉</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const memberController = require('../../controllers/member-controller')
+const userController = require('../../controllers/user-controller')
 
-router.get('/', memberController.getReservation)
-router.get('/booking', memberController.getReservationBooking)
-router.get('/booking/new', memberController.getNewBooking)
-router.post('/booking', memberController.postNewBooking)
-router.get('/checks', memberController.getReservationChecks)
-router.get('/checks/new', memberController.getNewChecks)
-router.post('/checks', memberController.postNewChecks)
+router.get('/', userController.getReservation)
+router.get('/booking', userController.getReservationBooking)
+router.get('/booking/new', userController.getNewBooking)
+router.post('/booking', userController.postNewBooking)
+router.get('/checks', userController.getReservationChecks)
+router.get('/checks/new', userController.getNewChecks)
+router.post('/checks', userController.postNewChecks)
 
 module.exports = router
