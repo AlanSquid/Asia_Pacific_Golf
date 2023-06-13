@@ -6,6 +6,7 @@ var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts')
 const usePassport = require('./config/passport')
 const session = require('express-session')
+const dotenv = require('dotenv')
 
 const routes = require('./routes')
 
@@ -17,8 +18,7 @@ app.use(expressLayouts)
 app.set('view engine', 'ejs');
 
 app.use(session({
-  // secret: process.env.SESSION_SECRET,
-  secret: "secret",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))

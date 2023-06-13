@@ -79,7 +79,7 @@ const userController = {
     const userId = req.user.id
     User.findByPk(userId)
       .then(user => {
-        res.render('gifts', { balance: user.balance, gift: user.gift })
+        res.render('gifts', { point: user.point, gift: user.gift })
       })
   }
 
