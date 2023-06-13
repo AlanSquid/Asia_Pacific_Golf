@@ -6,7 +6,9 @@ var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts')
 const usePassport = require('./config/passport')
 const session = require('express-session')
-const dotenv = require('dotenv')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 const routes = require('./routes')
 
