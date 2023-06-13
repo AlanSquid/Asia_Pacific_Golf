@@ -16,7 +16,7 @@ module.exports = {
         gift: 1,
         member_since: "2023/6/9",
         member_expire: "2024/6/9",
-        class_id: 22,
+        classId: 2,
         isAdmin: false,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -30,7 +30,7 @@ module.exports = {
         balance: 5000,
         member_since: "2023/5/19",
         member_expire: "2024/5/19",
-        class_id: 21,
+        classId: 1,
         isAdmin: false,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -46,7 +46,7 @@ module.exports = {
         gift: 10,
         member_since: "2023/6/9",
         member_expire: "2024/6/9",
-        class_id: 24,
+        classId: 4,
         isAdmin: false,
         text: "qwer1234",
         createdAt: new Date(),
@@ -63,7 +63,7 @@ module.exports = {
         gift: 3,
         member_since: "2023/6/9",
         member_expire: "2024/6/9",
-        class_id: 23,
+        classId: 3,
         text: 'abcdef',
         isAdmin: false,
         createdAt: new Date(),
@@ -79,7 +79,7 @@ module.exports = {
         point: 100,
         member_since: "2023/6/9",
         member_expire: "2024/6/9",
-        class_id: 22,
+        classId: 2,
         isAdmin: false,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -87,6 +87,7 @@ module.exports = {
       {
         member_id: "admin01",
         name: "amdin",
+        account: "admin",
         isAdmin: true,
         createdAt: new Date(),
         updatedAt: new Date()

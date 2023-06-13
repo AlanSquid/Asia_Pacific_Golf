@@ -5,7 +5,7 @@ const userController = require('../../controllers/user-controller')
 router.get('/', userController.getMemberArea)
 router.get('/orders', userController.getMemberOrders)
 router.get('/booked-orders', userController.getMemberBookedOrder)
-router.get('/details', userController.getMemberLogs)
+router.get('/details', userController.getMemberDetails)
 router.get('/gifts', userController.getMemberGifts)
 
 

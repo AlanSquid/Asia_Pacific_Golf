@@ -7,14 +7,13 @@ const reservations = require('./mudules/reservations')
 const admin = require('./mudules/admin')
 const auth = require('./mudules/auth')
 
-const { authenticator } = require('../middleware/auth')
+const { authenticator, adminAuthenticator } = require('../middleware/auth')
 
-
-router.use('/admin', admin)
-router.use('/members', members)
-router.use('/reservations', reservations)
+router.use('/admin', adminAuthenticator, admin)
+router.use('/members', authenticator, members)
+router.use('/reservations', authenticator, reservations)
 router.use('/auth', auth)
-router.use('/', home)
+router.use('/', authenticator, home)
 
 
 module.exports = router
