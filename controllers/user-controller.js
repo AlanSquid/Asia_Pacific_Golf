@@ -16,7 +16,11 @@ const userController = {
   },
   // 協助訂場
   getReservationBooking: (req, res, next) => {
-    res.render('booking', { name: 'Alan' })
+    const userId = req.user.id
+    User.findByPk(userId)
+      .then(user => {
+        res.render('booking', { name: user.name })
+      })
   },
   // 新增訂場
   getNewBooking: (req, res, next) => {
@@ -28,7 +32,11 @@ const userController = {
   },
   // 已訂場需結帳
   getReservationChecks: (req, res, next) => {
-    res.render('checks', { name: 'Alan' })
+    const userId = req.user.id
+    User.findByPk(userId)
+      .then(user => {
+        res.render('checks', { name: user.name })
+      })
   },
   // 新增已訂場需結帳
   getNewChecks: (req, res, next) => {
@@ -44,19 +52,35 @@ const userController = {
   },
   // 訂場紀錄
   getMemberOrders: (req, res, next) => {
-    res.render('orders', { name: 'Alan ' })
+    const userId = req.user.id
+    User.findByPk(userId)
+      .then(user => {
+        res.render('orders', { name: user.name })
+      })
   },
   // 未擊球預約
   getMemberBookedOrder: (req, res, next) => {
-    res.render('booked-orders', { name: 'Alan' })
+    const userId = req.user.id
+    User.findByPk(userId)
+      .then(user => {
+        res.render('bookedOrders', { name: user.name })
+      })
   },
   // 擊球及扣款明細
   getMemberDetails: (req, res, next) => {
-    res.render('details', { name: 'Alan', balance: 15000 })
+    const userId = req.user.id
+    User.findByPk(userId)
+      .then(user => {
+        res.render('details', { name: user.name })
+      })
   },
   // 會員好禮
   getMemberGifts: (req, res, next) => {
-    res.render('gifts', { balance: 15000, gift: 2 })
+    const userId = req.user.id
+    User.findByPk(userId)
+      .then(user => {
+        res.render('gifts', { balance: user.balance, gift: user.gift })
+      })
   }
 
 }
