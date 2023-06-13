@@ -8,5 +8,4 @@ router.get('/booked-orders', userController.getMemberBookedOrder)
 router.get('/details', userController.getMemberDetails)
 router.get('/gifts', userController.getMemberGifts)
 
-
 module.exports = router

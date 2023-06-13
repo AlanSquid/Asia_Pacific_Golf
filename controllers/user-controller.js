@@ -71,7 +71,7 @@ const userController = {
     const userId = req.user.id
     User.findByPk(userId)
       .then(user => {
-        res.render('details', { name: user.name })
+        res.render('details', { name: user.name, balance: user.balance })
       })
   },
   // 會員好禮

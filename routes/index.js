@@ -15,5 +15,4 @@ router.use('/reservations', authenticator, reservations)
 router.use('/auth', auth)
 router.use('/', authenticator, home)
 
-
 module.exports = router

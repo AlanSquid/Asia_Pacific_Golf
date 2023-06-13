@@ -11,9 +11,7 @@ module.exports = app => {
   app.use(passport.session())
 
   // 設置本地登入策略
-  passport.use(new LocalStrategy({
-    usernameField: 'account',
-  },
+  passport.use(new LocalStrategy({ usernameField: 'account' },
     (account, password, done) => {
       User.findOne({ where: { account } })
         .then(user => {
