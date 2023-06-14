@@ -6,6 +6,8 @@ var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts')
 const usePassport = require('./config/passport')
 const session = require('express-session')
+const flash = require('connect-flash')
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -32,6 +34,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 usePassport(app)
+
+// flash的使用與設定
+app.use(flash())
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')  // 設定 success_msg 訊息
+  res.locals.warning_msg = req.flash('warning_msg')  // 設定 warning_msg 訊息
+  res.locals.error = req.flash('error') // 設定passport提供的錯誤提示訊息
+  next()
+})
+
 app.use(routes)
 
 // catch 404 and forward to error handler

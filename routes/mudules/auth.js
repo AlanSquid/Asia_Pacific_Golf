@@ -6,7 +6,11 @@ const authController = require('../../controllers/auth-controller')
 
 // 登入
 router.get('/login', authController.getLoginPage)
-router.post('/login', passport.authenticate('local', { failureRedirect: '/auth/login' }),
+router.post('/login', passport.authenticate('local', {
+  failureRedirect: '/auth/login',
+  failureFlash: true,
+  badRequestMessage: '請重新輸入！',
+}),
   authController.memberOrAdmin
 )
 

@@ -11,12 +11,15 @@ module.exports = app => {
   app.use(passport.session())
 
   // 設置本地登入策略
-  passport.use(new LocalStrategy({ usernameField: 'account' },
-    (account, password, done) => {
+  passport.use(new LocalStrategy({
+    usernameField: 'account',
+    passReqToCallback: true
+  },
+    (req, account, password, done) => {
       User.findOne({ where: { account } })
         .then(user => {
           if (!user) {
-            return done(null, false, { message: 'That account is not registered!' })
+            return done(null, false, { message: '找不到此用戶！' })
           }
           return done(null, user)
         })
