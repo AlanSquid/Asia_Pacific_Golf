@@ -28,9 +28,9 @@ app.use(session({
   saveUninitialized: true
 }))
 
+app.use(methodOverride('_method'))
 app.use(logger('dev'))
 app.use(express.json())
-app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
@@ -43,7 +43,6 @@ app.use((req, res, next) => {
   res.locals.member_id = req.body.member_id
   res.locals.name = req.body.name
   res.locals.account = req.body.account
-  res.locals.team = req.body.team
   res.locals.isMale = req.body.isMale
   res.locals.member_since = req.body.member_since
   res.locals.member_expire = req.body.member_expire
@@ -54,7 +53,7 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg')  // 設定 success_msg 訊息
   res.locals.warning_msg = req.flash('warning_msg')  // 設定 warning_msg 訊息
   res.locals.login_error = req.flash('error') // 設定passport提供的錯誤提示訊息
-  res.locals.errors = res.errors
+  res.locals.formErrors = res.formErrors
   next()
 })
 

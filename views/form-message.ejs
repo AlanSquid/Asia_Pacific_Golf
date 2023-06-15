@@ -1,7 +1,7 @@
-<% if (errors) { %>
+<% if (formErrors) { %>
   <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
-    <% for (let i=0; i < errors.length; i++) { %>
-      <strong><%- errors[i].message %></strong><br>
+    <% for (let i=0; i < formErrors.length; i++) { %>
+      <strong><%- formErrors[i].message %></strong><br>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       <% } %>
   </div>

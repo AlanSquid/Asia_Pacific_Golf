@@ -1,4 +1,4 @@
-const { redirect } = require('express/lib/response')
+const { Op } = require("sequelize")
 const models = require('../models')
 const User = models.User
 const Class = models.Class
@@ -126,20 +126,20 @@ const adminController = {
     } = req.body
 
     // 錯誤訊息處理
-    const errors = []
+    const formErrors = []
     // 姓名帳號為必填
     if (!name || !account) {
-      errors.push({ message: '姓名、帳號為必填欄位!' })
+      formErrors.push({ message: '姓名、帳號為必填欄位!' })
     }
-    if (errors.length) {
-      return res.render('new-member', { errors })
+    if (formErrors.length) {
+      return res.render('new-member', { formErrors })
     }
     User.findOne({ where: { account } })
       .then(user => {
         if (user) {
-          errors.push({ message: '此帳號已存在，請重新輸入帳號！' })
+          formErrors.push({ message: '此帳號已存在，請重新輸入帳號！' })
           return res.render('new-member', {
-            errors,
+            formErrors,
             account: null,
           })
         }
@@ -165,18 +165,55 @@ const adminController = {
       nest: true
     })
       .then(user => {
+        console.log(user)
         res.render('edit-member', { user })
       })
   },
 
   putEditMember: (req, res, next) => {
     const id = req.params.id
-    console.log(id)
-    console.log(req.body)
-    // User.update(req.body, { where: { id } })
-    //   .then(() => {
-    //     res.redirect('/admin/members-info')
-    //   })
+    const {
+      member_id, name,
+      account,
+      isMale,
+      member_since,
+      member_expire,
+      member_class,
+      text
+    } = req.body
+
+    User.findByPk(id)
+      .then(user => {
+        // 錯誤處理
+        const formErrors = []
+        // 姓名帳號為必填
+        if (!name || !account) {
+          formErrors.push({ message: '姓名、帳號為必填欄位!' })
+        }
+        if (formErrors.length) {
+          return res.render('edit-member', { formErrors, user })
+        }
+        User.findOne({
+          where: {
+            [Op.and]: [
+              { account },
+              { id: { [Op.ne]: id } }
+            ]
+          }
+        })
+          .then(sameUser => {
+            if (sameUser) {
+              formErrors.push({ message: '此帳號已存在，請重新輸入帳號！' })
+              return res.render('edit-member', {
+                formErrors,
+                user
+              })
+            }
+            User.update(req.body, { where: { id } })
+              .then(() => res.redirect('/admin/members-info'))
+          })
+      })
+      .catch(err => console.log(err))
   },
 
   // 球場資訊
