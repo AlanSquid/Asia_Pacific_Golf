@@ -165,7 +165,6 @@ const adminController = {
       nest: true
     })
       .then(user => {
-        console.log(user)
         res.render('edit-member', { user })
       })
   },
