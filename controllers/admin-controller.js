@@ -216,6 +216,16 @@ const adminController = {
       .catch(err => console.log(err))
   },
 
+  // 刪除會員
+  deleteMember: (req, res, next) => {
+    const id = req.params.id
+    User.findByPk(id)
+      .then(user => {
+        user.destroy()
+        res.redirect('/admin/members-info')
+      })
+  },
+
   // 球場資訊
   getAdminCoursies: (req, res, next) => {
     res.render('coursies')
