@@ -7,7 +7,7 @@ const authController = {
   // 判斷是會員還是管理員
   memberOrAdmin: (req, res, next) => {
     if (req.user.isAdmin) {
-      res.redirect('/admin')
+      return res.redirect('/admin')
     }
     res.redirect('/')
   },

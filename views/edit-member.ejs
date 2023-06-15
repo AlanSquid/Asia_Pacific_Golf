@@ -16,66 +16,69 @@
 
   <div class="row text-center mt-3">
     <div class="col-10 col-md-6 m-auto">
-      <form action="/admin/members-info" method="POST">
+      <form action="/admin/members-info/edit/<%= user.id%>?_method=PUT" method="POST">
         <!-- 會員編號 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="member_id">會員編號</span>
-          <input type="text" class="form-control" aria-label="member_id" aria-describedby="member_id">
+          <input type="text" class="form-control" aria-label="member_id" aria-describedby="member_id"
+            value="<%= user.member_id%>">
         </div>
         <!-- 姓名 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="name">姓名</span>
-          <input type="text" class="form-control" aria-label="name" aria-describedby="name">
+          <input type="text" class="form-control" aria-label="name" aria-describedby="name" value="<%= user.name%>">
         </div>
         <!-- 登入帳號 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="account">登入帳號</span>
-          <input type="text" class="form-control" aria-label="account" aria-describedby="account">
-        </div>
-        <!-- 球隊 -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="team">球隊</span>
-          <input type="text" class="form-control" aria-label="team" aria-describedby="team">
+          <input type="text" class="form-control" aria-label="account" aria-describedby="account"
+            value="<%= user.account%>">
         </div>
         <!-- 性別 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="gender">性別</span>
           <div class="check-group ms-3 pt-2">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-              <label class="form-check-label" for="inlineRadio1">男</label>
+              <input class="form-check-input" type="radio" name="isMale" id="male" value="1"
+                <%if(user.isMale==1){%>checked
+              <%}%>>
+                <label class="form-check-label" for="male">男</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-              <label class="form-check-label" for="inlineRadio2">女</label>
+              <input class="form-check-input" type="radio" name="isMale" id="female" value="0"
+                <%if(user.isMale==0){%>checked<%}%>>
+                <label class="form-check-label" for="female">女</label>
             </div>
           </div>
         </div>
         <!-- 入會時間 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="member_since">入會時間</span>
-          <input type="date" class="form-control" aria-label="member_since" aria-describedby="member_since">
+          <input type="date" class="form-control" aria-label="member_since" aria-describedby="member_since"
+            value="<%= user.member_since%>">
         </div>
         <!-- 會籍到期日 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="member_expire">會籍到期日</span>
-          <input type="date" class="form-control" aria-label="member_expire" aria-describedby="member_expire">
+          <input type="date" class="form-control" aria-label="member_expire" aria-describedby="member_expire"
+            value="<%= user.member_expire%>">
         </div>
         <!-- 會籍類型 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="member_class">會籍類型</span>
-          <input type="text" class="form-control" aria-label="member_class" aria-describedby="member_class">
+          <input type="text" class="form-control" aria-label="member_class" aria-describedby="member_class"
+            value="<%= user.Class.name%>">
         </div>
         <!-- 備註 -->
         <div class="input-group mb-3">
           <span class="input-group-text">備註</span>
-          <textarea class="form-control" aria-label="text" style="height: 13vh;"></textarea>
+          <textarea class="form-control" aria-label="text" style="height: 13vh;"><%= user.text%></textarea>
         </div>
         <div class="submit-back d-flex justify-content-end mb-3">
           <button type="submit" class="btn btn-primary text-nowrap" style="width: 8vw; min-width: 5rem;">修改</button>
 
-          <button type="button" class="ms-3 btn btn-secondary text-nowrap" style="width: 8vw; min-width: 5rem;"
-            onclick="history.back()">關閉</button>
+          <a href="/admin/members-info" class="btn btn-secondary ms-2 text-nowrap"
+            style="width: 8vw; min-width: 5rem;">回上頁</a>
         </div>
       </form>
     </div>

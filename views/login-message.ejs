@@ -1,21 +1,21 @@
-<!-- 提醒 -->
+<!-- 提醒訊息 -->
 <% if (warning_msg !="" ) { %>
   <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
     <strong class="text-nowrap"><%- warning_msg %></strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   <% } %>
-    <!-- 成功 -->
+    <!-- 成功訊息 -->
     <% if (success_msg!="" ) { %>
       <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
         <strong><%- success_msg %></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       <% } %>
-        <!-- 錯誤 -->
-        <% if (error!="" ) { %>
+        <!-- passport驗證錯誤 -->
+        <% if (login_error!="" ) { %>
           <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
-            <strong><%- error %></strong>
+            <strong><%- login_error %></strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           <% } %>

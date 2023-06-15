@@ -10,7 +10,6 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       member_id: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       name: {
@@ -36,10 +35,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       member_since: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       member_expire: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       text: {
         type: Sequelize.STRING

@@ -8,7 +8,7 @@ module.exports = {
     res.redirect('/auth/login')
   },
   adminAuthenticator: (req, res, next) => {
-    if (req.isAuthenticated() && req.user.isAdmin) {
+    if (req.isAuthenticated() && (req.user.isAdmin)) {
       return next()
     }
     req.flash('warning_msg', '使用前請登入！')

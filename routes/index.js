@@ -9,9 +9,9 @@ const auth = require('./mudules/auth')
 
 const { authenticator, adminAuthenticator } = require('../middleware/auth')
 
-router.use('/admin', adminAuthenticator, admin)
 router.use('/members', authenticator, members)
 router.use('/reservations', authenticator, reservations)
+router.use('/admin', adminAuthenticator, admin)
 router.use('/auth', auth)
 router.use('/', authenticator, home)
 

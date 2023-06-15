@@ -34,7 +34,10 @@ router.get('/summary/edit', adminController.getAdminEditSummary)
 // 會員資訊
 router.get('/members-info', adminController.getAdminMembers)
 router.get('/members-info/new', adminController.getNewMember)
-router.get('/members-info/edit', adminController.getEditMember)
+router.post('/members-info', adminController.postNewMember)
+router.get('/members-info/edit/:id', adminController.getEditMember)
+router.put('/members-info/edit/:id', adminController.putEditMember)
+
 // 球場資訊
 router.get('/coursies', adminController.getAdminCoursies)
 router.get('/coursies/new', adminController.getNewCoursies)

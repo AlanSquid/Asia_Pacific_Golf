@@ -82,7 +82,6 @@ const userController = {
         res.render('gifts', { point: user.point, gift: user.gift })
       })
   }
-
 }
 
 module.exports = userController

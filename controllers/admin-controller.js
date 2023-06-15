@@ -1,3 +1,9 @@
+const { redirect } = require('express/lib/response')
+const models = require('../models')
+const User = models.User
+const Class = models.Class
+
+
 const adminController = {
   // Admin首頁
   getAdminIndex: (req, res, next) => {
@@ -89,16 +95,90 @@ const adminController = {
   },
   // 會員資訊
   getAdminMembers: (req, res, next) => {
-    res.render('members-info')
+    User.findAll({
+      where: { isAdmin: false },
+      include: {
+        model: Class,
+        attributes: ['name']
+      },
+      raw: true,
+      nest: true
+    })
+      .then(users => {
+        res.render('members-info', { users })
+      })
   },
   // 新增會員資訊
   getNewMember: (req, res, next) => {
+
+
     res.render('new-member')
+  },
+  postNewMember: (req, res, next) => {
+    const {
+      member_id, name,
+      account,
+      isMale,
+      member_since,
+      member_expire,
+      member_class,
+      text
+    } = req.body
+
+    // 錯誤訊息處理
+    const errors = []
+    // 姓名帳號為必填
+    if (!name || !account) {
+      errors.push({ message: '姓名、帳號為必填欄位!' })
+    }
+    if (errors.length) {
+      return res.render('new-member', { errors })
+    }
+    User.findOne({ where: { account } })
+      .then(user => {
+        if (user) {
+          errors.push({ message: '此帳號已存在，請重新輸入帳號！' })
+          return res.render('new-member', {
+            errors,
+            account: null,
+          })
+        }
+        User.create({
+          member_id, name,
+          account,
+          isMale,
+          member_since,
+          member_expire,
+          class: member_class,
+          text
+        })
+          .then(() => res.redirect('/admin/members-info'))
+      })
+      .catch(err => console.log(err))
   },
   // 修改會員資訊
   getEditMember: (req, res, next) => {
-    res.render('edit-member')
+    const id = req.params.id
+    User.findByPk(id, {
+      include: { model: Class, attributes: ['name'] },
+      raw: true,
+      nest: true
+    })
+      .then(user => {
+        res.render('edit-member', { user })
+      })
   },
+
+  putEditMember: (req, res, next) => {
+    const id = req.params.id
+    console.log(id)
+    console.log(req.body)
+    // User.update(req.body, { where: { id } })
+    //   .then(() => {
+    //     res.redirect('/admin/members-info')
+    //   })
+  },
+
   // 球場資訊
   getAdminCoursies: (req, res, next) => {
     res.render('coursies')
@@ -113,9 +193,6 @@ const adminController = {
   },
   getAdminLogs: (req, res, next) => {
     res.render('logs')
-  },
-  getNewMember: (req, res, next) => {
-    res.render('new-member')
   },
 }
 

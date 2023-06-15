@@ -22,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     balance: DataTypes.INTEGER,
     point: DataTypes.INTEGER,
     gift: DataTypes.INTEGER,
-    member_since: DataTypes.DATE,
-    member_expire: DataTypes.DATE,
+    member_since: DataTypes.STRING,
+    member_expire: DataTypes.STRING,
     text: DataTypes.STRING,
     isAdmin: DataTypes.BOOLEAN
   }, {
