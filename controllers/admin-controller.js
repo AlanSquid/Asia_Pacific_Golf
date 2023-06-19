@@ -93,7 +93,7 @@ const adminController = {
   getAdminEditSummary: (req, res, next) => {
     res.render('edit-summary')
   },
-  // 會員資訊
+  // 會員資訊頁面
   getAdminMembers: (req, res, next) => {
     User.findAll({
       where: { isAdmin: false },
@@ -101,6 +101,8 @@ const adminController = {
         model: Class,
         attributes: ['name']
       },
+      // limit: 10,
+      order: [['id', 'DESC']],
       raw: true,
       nest: true
     })
@@ -108,12 +110,11 @@ const adminController = {
         res.render('members-info', { users })
       })
   },
-  // 新增會員資訊
+  // 新增會員資訊頁面
   getNewMember: (req, res, next) => {
-
-
     res.render('new-member')
   },
+  // 新增會員
   postNewMember: (req, res, next) => {
     const {
       member_id, name,
@@ -156,7 +157,7 @@ const adminController = {
       })
       .catch(err => console.log(err))
   },
-  // 修改會員資訊
+  // 修改會員資訊頁面
   getEditMember: (req, res, next) => {
     const id = req.params.id
     User.findByPk(id, {
@@ -168,7 +169,7 @@ const adminController = {
         res.render('edit-member', { user })
       })
   },
-
+  // 修改會員資訊
   putEditMember: (req, res, next) => {
     const id = req.params.id
     const {

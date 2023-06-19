@@ -20,28 +20,32 @@
     </div>
   </div>
 
-  <form action="/admin/booking" method="POST">
+  <form action="/admin/members-info" method="GET">
     <div class="row g-4 mt-1">
       <!-- 會員編號 -->
       <div class="col-12 col-sm-4">
         <label for="member_id" class="form-label">會員編號</label>
-        <input type="text" class="form-control" id="member_id">
+        <input type="text" class="form-control" id="member_id" name="member_id">
       </div>
       <!-- 姓名 -->
       <div class="col-12 col-sm-4">
         <label for="name" class="form-label">姓名</label>
-        <input type="text" class="form-control" id="name">
+        <input type="text" class="form-control" id="name" name="name">
       </div>
       <!-- 帳號 -->
       <div class="col-12 col-sm-4">
         <label for="account" class="form-label">登入帳號</label>
-        <input type="text" class="form-control" id="account">
+        <input type="text" class="form-control" id="account" name="account">
       </div>
     </div>
 
-    <a href="/admin/members-info/" class="d-grid btn btn-primary mt-3 m-auto">
-      <h5>會員查詢</h5>
-    </a>
+    <div class="row">
+      <div class="col">
+        <button type="submit" class="d-grid btn btn-primary mt-3 m-auto w-100">
+          <h5>會員查詢</h5>
+        </button>
+      </div>
+    </div>
   </form>
 
   <a href="/admin/members-info/new" class="d-grid btn btn-primary mt-3 mb-2  m-auto">
@@ -64,7 +68,7 @@
     </thead>
     <tbody>
       <% for (let i=0; i < users.length; i++) {%>
-        <tr>
+        <tr class="userRow" data-id="<%= users[i].id%>">
           <td>
             <%= users[i].member_id %>
           </td>
@@ -79,10 +83,10 @@
             <% if (users[i].isMale==0){%>女<%}%>
           </td>
           <td>
-            <%= users[i].memeber_since %>
+            <%= users[i].member_since %>
           </td>
           <td>
-            <%= users[i].memeber_expire %>
+            <%= users[i].member_expire %>
           </td>
           <td>
             <%= users[i].Class.name %>
@@ -94,7 +98,7 @@
             <div class="d-flex">
             <a href="/admin/members-info/<%= users[i].id%>/edit" class="btn btn-info">修改</a>
             <form action="/admin/members-info/<%= users[i].id%>?_method=DELETE" method="POST">
-              <button type="submit" class="btn btn-danger ms-2" onclick="return confirm('是否確定要刪除會員?')">刪除</button>
+              <button type="submit" class="del-btn btn btn-danger ms-2" onclick="return confirm('是否確定要刪除會員?')">刪除</button>
             </form>
             </div>
           </td>
@@ -104,22 +108,4 @@
   </table>
 </div>
 
-<script>
-  $(document).ready(function () {
-    $('#myTable').DataTable({
-      // 中文化
-      language: {
-        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
-      },
-      // 分頁器
-      paging: false,
-      // 滾軸頁面
-      scrollY: 400,
-      // 關鍵字搜尋
-      searching: false,
-      // 排序
-      ordering: false
-    });
-  });
-</script>
-</div>
+<script src="/javascripts/dataTable.js"></script>
