@@ -95,25 +95,74 @@ const adminController = {
   },
   // 會員資訊頁面
   getAdminMembers: (req, res, next) => {
-    User.findAll({
-      where: { isAdmin: false },
+    res.render('members-info')
+    // User.findAll({
+    //   where: { isAdmin: false },
+    //   include: {
+    //     model: Class,
+    //     attributes: ['name']
+    //   },
+    //   limit: 10,
+    //   order: [['id', 'DESC']],
+    //   raw: true,
+    //   nest: true
+    // })
+    //   .then(users => {
+    //     users.data = users
+    //     res.render('members-info', { users })
+    //   })
+  },
+
+  getMemberDatas: (req, res, next) => {
+    const pagesize = Number(req.query.length)
+    const start = Number(req.query.start)
+
+    User.findAndCountAll({
+      where: {
+        isAdmin: false,
+      },
       include: {
         model: Class,
         attributes: ['name']
       },
-      // limit: 10,
+      limit: [start, pagesize],
       order: [['id', 'DESC']],
       raw: true,
       nest: true
     })
       .then(users => {
-        res.render('members-info', { users })
+        const recordsTotal = users.count
+        const recordsFiltered = users.count
+        const resultData = []
+        users.rows.forEach(user => {
+          resultData.push({
+            member_id: user.member_id,
+            name: user.name,
+            account: user.account,
+            isMale: user.isMale ? "男" : "女",
+            member_since: user.member_since,
+            member_expire: user.member_expire,
+            ClassId: user.Class.name,
+            text: user.text,
+            id: user.id,
+          })
+        })
+        const output = {
+          draw: req.query.draw,
+          recordsTotal,
+          recordsFiltered,
+          data: resultData
+        }
+        res.json(output)
       })
   },
+
+
   // 新增會員資訊頁面
   getNewMember: (req, res, next) => {
     res.render('new-member')
   },
+
   // 新增會員
   postNewMember: (req, res, next) => {
     const {

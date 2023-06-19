@@ -33,6 +33,8 @@ router.get('/summary/new', adminController.getAdminNewSummary)
 router.get('/summary/edit', adminController.getAdminEditSummary)
 // 會員資訊
 router.get('/members-info', adminController.getAdminMembers)
+router.get('/api/get_members', adminController.getMemberDatas)
+
 router.get('/members-info/new', adminController.getNewMember)
 router.post('/members-info', adminController.postNewMember)
 router.get('/members-info/:id/edit/', adminController.getEditMember)

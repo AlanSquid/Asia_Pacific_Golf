@@ -67,45 +67,59 @@
       </tr>
     </thead>
     <tbody>
-      <% for (let i=0; i < users.length; i++) {%>
-        <tr class="userRow" data-id="<%= users[i].id%>">
-          <td>
-            <%= users[i].member_id %>
-          </td>
-          <td>
-            <%= users[i].name %>
-          </td>
-          <td>
-            <%= users[i].account %>
-          </td>
-          <td>
-            <% if (users[i].isMale==1){%>男<%}%>
-            <% if (users[i].isMale==0){%>女<%}%>
-          </td>
-          <td>
-            <%= users[i].member_since %>
-          </td>
-          <td>
-            <%= users[i].member_expire %>
-          </td>
-          <td>
-            <%= users[i].Class.name %>
-          </td>
-          <td>
-            <%= users[i].text %>
-          </td>
-          <td>
-            <div class="d-flex">
-            <a href="/admin/members-info/<%= users[i].id%>/edit" class="btn btn-info">修改</a>
-            <form action="/admin/members-info/<%= users[i].id%>?_method=DELETE" method="POST">
-              <button type="submit" class="del-btn btn btn-danger ms-2" onclick="return confirm('是否確定要刪除會員?')">刪除</button>
-            </form>
-            </div>
-          </td>
-        </tr>
-        <% } %>
     </tbody>
   </table>
 </div>
 
-<script src="/javascripts/dataTable.js"></script>
+<!-- <script src="/javascripts/dataTable.js"></script> -->
+
+<script>
+  $(document).ready(function () {
+    $('#myTable').DataTable({
+      // 中文化
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
+      },
+      // 分頁器
+      paging: true,
+      // 滾軸頁面
+      scrollY: 400,
+      // 關鍵字搜尋
+      searching: false,
+      // 排序
+      ordering: false,
+      // 顯示加載中
+      // processing: true,  
+      // 開啟伺服器端分頁
+      serverSide: true,
+
+      ajax: {
+        url: `http://localhost:3000/admin/api/get_members`,
+        type: 'GET'
+      },
+      columns: [
+        { data: "member_id" },
+        { data: "name" },
+        { data: "account" },
+        { data: "isMale" },
+        { data: "member_since" },
+        { data: "member_expire" },
+        { data: "ClassId" },
+        { data: "text" },
+        {
+          data: "id",
+          render: function (id) {
+            const html = ` <div class="d-flex">
+                <a href="/admin/members-info/${id}/edit" class="btn btn-info">修改</a>
+                <form action="/admin/members-info/${id}?_method=DELETE" method="POST">
+                  <button type="submit" class="del-btn btn btn-danger ms-2" onclick="return confirm('是否確定要刪除會員?')">刪除</button>
+                </form>
+                </div>`
+            return html
+          }
+        }
+      ]
+    })
+  })
+
+</script>
