@@ -7,8 +7,8 @@
           <h1>修改球場資訊</h1>
         </div>
         <div class="col-3">
-          <button class="btn btn-secondary mb-2 text-nowrap" style="width: 8vw; min-width: 5rem;"
-            onclick="history.back()">回上頁</button>
+          <a href="/admin/coursies" class="btn btn-secondary mb-2 text-nowrap"
+            style="width: 8vw; min-width: 5rem;">回上頁</a>
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
 
   <div class="row text-center mt-3">
     <div class="col-10 col-md-6 m-auto">
-      <form action="/admin/members-info" method="POST">
+      <form action="/admin/members" method="POST">
         <!-- 球場編號 -->
         <div class="input-group mb-3">
           <span class="input-group-text" id="course_id">球場編號</span>

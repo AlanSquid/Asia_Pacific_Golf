@@ -7,8 +7,8 @@
           <h1>修改會員資訊</h1>
         </div>
         <div class="col-3">
-          <button class="btn btn-secondary mb-2 text-nowrap" style="width: 8vw; min-width: 5rem;"
-            onclick="history.back()">回上頁</button>
+          <a href="/admin/members" class="btn btn-secondary mb-2 text-nowrap"
+            style="width: 8vw; min-width: 5rem;">回上頁</a>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
     <div class="col-10 col-md-6 m-auto">
       <!-- 提示訊息 -->
       <%- include form-message.ejs %>
-        <form action="/admin/members-info/<%= user.id%>?_method=PUT" method="POST">
+        <form action="/admin/members/<%= user.id%>?_method=PUT" method="POST">
           <!-- 會員編號 -->
           <div class="input-group mb-3">
             <span class="input-group-text" id="member_id">會員編號</span>
@@ -82,7 +82,7 @@
             <button type="submit" class="btn btn-primary text-nowrap" style="width: 8vw; min-width: 5rem;"
               onclick="return confirm('是否確定要修改會員資料?')">修改</button>
 
-            <a href="/admin/members-info" class="btn btn-secondary ms-2 text-nowrap"
+            <a href="/admin/members" class="btn btn-secondary ms-2 text-nowrap"
               style="width: 8vw; min-width: 5rem;">回上頁</a>
           </div>
         </form>

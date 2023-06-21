@@ -2,7 +2,7 @@ const models = require('../models')
 const User = models.User
 
 const userController = {
-  // 首頁
+  // GET首頁
   getIndex: (req, res, next) => {
     const userId = req.user.id
     User.findByPk(userId)
@@ -10,72 +10,65 @@ const userController = {
         res.render('index', { name: user.name, balance: user.balance, point: user.point })
       })
   },
-  // 我要預約
-  getReservation: (req, res, next) => {
+  // GET我要預約頁面
+  getReservationPage: (req, res, next) => {
     res.render('reservation')
   },
-  // 協助訂場
-  getReservationBooking: (req, res, next) => {
+  // GET協助訂場頁面
+  getBookingPage: (req, res, next) => {
     const userId = req.user.id
     User.findByPk(userId)
       .then(user => {
         res.render('booking', { name: user.name })
       })
   },
-  // 新增訂場
-  getNewBooking: (req, res, next) => {
+  // GET新增訂場頁面
+  getNewBookingPage: (req, res, next) => {
     res.render('new-booking')
   },
-
+  // POST新增訂場
   postNewBooking: (req, res, next) => {
 
   },
-  // 已訂場需結帳
-  getReservationChecks: (req, res, next) => {
+  // GET已訂場需結帳頁面
+  getCheckPage: (req, res, next) => {
     const userId = req.user.id
     User.findByPk(userId)
       .then(user => {
-        res.render('checks', { name: user.name })
+        res.render('check', { name: user.name })
       })
   },
-  // 新增已訂場需結帳
-  getNewChecks: (req, res, next) => {
-    res.render('new-checks')
+  // GET新增已訂場需結帳頁面
+  getNewCheckPage: (req, res, next) => {
+    res.render('new-check')
   },
-
-  postNewChecks: (req, res, next) => {
+  // POST新增已訂場需結帳
+  postNewCheck: (req, res, next) => {
 
   },
-  // 會員專區
-  getMemberArea: (req, res, next) => {
+  // GET會員專區頁面
+  getMemberAreaPage: (req, res, next) => {
     res.render('members')
   },
-  // 訂場紀錄
-  getMemberOrders: (req, res, next) => {
+  // GET擊球紀錄頁面
+  getBookingRecordsPage: (req, res, next) => {
     const userId = req.user.id
     User.findByPk(userId)
       .then(user => {
-        res.render('orders', { name: user.name })
+        res.render('booking-records', { name: user.name })
       })
   },
-  // 未擊球預約
-  getMemberBookedOrder: (req, res, next) => {
-    const userId = req.user.id
-    User.findByPk(userId)
-      .then(user => {
-        res.render('bookedOrders', { name: user.name })
-      })
-  },
-  // 擊球及扣款明細
-  getMemberDetails: (req, res, next) => {
+
+  // GET會員錢包頁面
+  getMemberDetailsPage: (req, res, next) => {
     const userId = req.user.id
     User.findByPk(userId)
       .then(user => {
         res.render('details', { name: user.name, balance: user.balance })
       })
   },
-  // 會員好禮
-  getMemberGifts: (req, res, next) => {
+  // GET會員好禮頁面
+  getMemberGiftsPage: (req, res, next) => {
     const userId = req.user.id
     User.findByPk(userId)
       .then(user => {

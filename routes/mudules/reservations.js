@@ -2,12 +2,12 @@ const express = require('express')
 const router = express.Router()
 const userController = require('../../controllers/user-controller')
 
-router.get('/', userController.getReservation)
-router.get('/booking', userController.getReservationBooking)
-router.get('/booking/new', userController.getNewBooking)
+router.get('/', userController.getReservationPage)
+router.get('/booking', userController.getBookingPage)
+router.get('/booking/new', userController.getNewBookingPage)
 router.post('/booking', userController.postNewBooking)
-router.get('/checks', userController.getReservationChecks)
-router.get('/checks/new', userController.getNewChecks)
-router.post('/checks', userController.postNewChecks)
+router.get('/check', userController.getCheckPage)
+router.get('/check/new', userController.getNewCheckPage)
+router.post('/check', userController.postNewCheck)
 
 module.exports = router

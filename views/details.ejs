@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="row text-center h-100">
     <div class="col-3 pt-5">
-      <div class="item d-flex flex-column">
+      <div class="item d-flex flex-column align-items-start">
         <h6 class="text-nowrap">會員: <%= name %>
         </h6>
         <h6 class="text-nowrap">錢包餘額: <%= balance %>
@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="col-6 pt-3">
-      <h3>擊球及扣款明細</h3>
+      <h3>會員錢包</h3>
     </div>
     <div class="col-3">
       <div class="item d-flex flex-column" style="max-width: 6rem;">
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <table id="myTable" class="display cell-border responsive nowrap" style="width: 80%;">
+  <table id="myTable" class="display cell-border responsive nowrap" style="width: 100%;">
     <thead>
       <tr>
         <th>項目</th>
@@ -28,7 +28,7 @@
         <th>球場</th>
         <th>球隊</th>
         <th>金額</th>
-        <th>小記</th>
+        <th>小計</th>
         <th>備註</th>
       </tr>
     </thead>
@@ -41,7 +41,7 @@
         <td></td>
         <td></td>
         <td></td>
-        <td></td>
+        <td><button class="btn btn-secondary">查看</button></td>
       </tr>
     </tbody>
   </table>
