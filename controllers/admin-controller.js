@@ -8,11 +8,29 @@ const Class = models.Class
 const adminController = {
   // GET Admin首頁
   getAdminIndex: (req, res, next) => {
-    res.render('admin-index')
+    const id = req.user.id
+    User.findByPk(id)
+      .then(user => {
+        const name = user.name
+        res.render('admin-index', { name })
+      })
+      .catch(err => console.log(err))
   },
   // GET協助訂場頁面
   getBookingPage: (req, res, next) => {
-    res.render('admin-booking')
+    const id = req.user.id
+    User.findByPk(id)
+      .then(user => {
+        const name = user.name
+        res.render('admin-booking', { name })
+      })
+      .catch(err => console.log(err))
+  },
+  // table-協助訂場資料
+  getBookingDatas: (req, res, next) => {
+    const pagesize = Number(req.query.length)
+    const start = Number(req.query.start)
+
   },
   // GET新增協助訂場頁面
   getNewBookingPage: (req, res, next) => {
@@ -35,7 +53,7 @@ const adminController = {
     res.render('admin-edit-check')
   },
   // GET擊球及扣款明細頁面
-  getAdminDetailsPage: (req, res, next) => {
+  getDetailsPage: (req, res, next) => {
     res.render('admin-details')
   },
   // GET新增擊球及扣款明細頁面
@@ -47,7 +65,7 @@ const adminController = {
     res.render('admin-edit-details')
   },
   // GET會員好禮頁面
-  getGiftPage: (req, res, next) => {
+  getGiftsPage: (req, res, next) => {
     res.render('admin-gifts')
   },
   // GET新增會員好禮頁面
@@ -62,7 +80,7 @@ const adminController = {
   getMembersPage: (req, res, next) => {
     res.render('admin-members')
   },
-  // API 回傳會員資料
+  // table-會員資料
   getMemberDatas: (req, res, next) => {
     const pagesize = Number(req.query.length)
     const start = Number(req.query.start)
@@ -70,10 +88,6 @@ const adminController = {
     User.findAndCountAll({
       where: {
         isAdmin: false,
-      },
-      include: {
-        model: Class,
-        attributes: ['name']
       },
       limit: [start, pagesize],
       order: [['id', 'DESC']],
@@ -224,7 +238,7 @@ const adminController = {
   },
 
   // GET球場資訊頁面
-  getAdminCoursiesPage: (req, res, next) => {
+  getCoursiesPage: (req, res, next) => {
     res.render('admin-coursies')
   },
   // GET新增球場資訊頁面
@@ -235,7 +249,7 @@ const adminController = {
   getEditCoursePage: (req, res, next) => {
     res.render('admin-edit-course')
   },
-  getAdminLogs: (req, res, next) => {
+  getLogsPage: (req, res, next) => {
     res.render('admin-logs')
   },
 }

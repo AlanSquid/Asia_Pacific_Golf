@@ -1,57 +1,58 @@
 'use strict';
 const { faker } = require('@faker-js/faker')
 
+const membership = ['一般會員', '黃金會員', '白金會員', '鑽石會員']
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    const userList = Array.from({ length: 100 }, (_, i) => ({
+    const userList = Array.from({ length: 99 }, (_, i) => ({
       member_id: faker.string.alpha({ length: 3, casing: 'upper' }) + faker.string.numeric({ length: 3, allowLeadingZeros: true }),
       name: faker.person.firstName(),
       account: faker.string.alphanumeric({ length: { min: 5, max: 10 } }),
-      isMale: faker.datatype.boolean(),
-      balance: faker.number.int({ min: 100, max: 1000000 }),
-      point: faker.number.int({ min: 10, max: 10000 }),
-      gift: faker.number.int({ min: 1, max: 1000 }),
-      member_since: "2023-06-09",
-      member_expire: "2024-06-09",
-      classId: faker.number.int({ min: 1, max: 4 }),
-      isAdmin: false,
-      text: faker.lorem.words({ min: 0, max: 2 }),
-      createdAt: new Date(),
-      updatedAt: new Date()
+      gender: faker.datatype.boolean(),
+      phone: faker.phone.number('09########'),
+      address: faker.location.street(),
+      person_id: faker.string.alpha({ length: 1, casing: 'upper' }) + faker.string.numeric({ length: 9 }),
+      passport_num: faker.string.numeric({ length: 9 }),
+      point: faker.string.numeric({ length: { min: 2, max: 5 }, allowLeadingZeros: false }),
+      gift: faker.string.numeric({ length: { min: 1, max: 4 }, allowLeadingZeros: false }),
+      member_since: faker.date.anytime(),
+      member_expire: faker.date.anytime(),
+      membership: membership[Math.floor(Math.random() * 4)],
+      is_admin: false,
+      description: faker.lorem.words({ min: 0, max: 2 }),
+      created_at: new Date(),
+      updated_at: new Date()
     }))
 
     userList.push(
       {
         member_id: "admin01",
-        name: "amdin",
+        name: "admin",
         account: "admin",
-        isAdmin: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        is_admin: true,
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
-        member_id: 'AAA123',
+        member_id: 'QWE123',
         name: 'Alan',
         account: 'A123456789',
-        isMale: true,
-        balance: faker.number.int({ min: 100, max: 1000000 }),
-        point: faker.number.int({ min: 10, max: 10000 }),
-        gift: faker.number.int({ min: 1, max: 1000 }),
-        member_since: "2023-06-09",
-        member_expire: "2024-06-09",
-        classId: faker.number.int({ min: 1, max: 4 }),
-        isAdmin: false,
-        text: faker.lorem.words({ min: 0, max: 2 }),
-        createdAt: new Date(),
-        updatedAt: new Date()
+        gender: 1,
+        point: faker.string.numeric({ length: { min: 2, max: 5 }, allowLeadingZeros: false }),
+        gift: faker.string.numeric({ length: { min: 1, max: 4 }, allowLeadingZeros: false }),
+        membership: membership[Math.floor(Math.random() * 4)],
+        is_admin: false,
+        created_at: new Date(),
+        updated_at: new Date()
       }
     )
 
-    await queryInterface.bulkInsert('Users', userList, {})
+    await queryInterface.bulkInsert('users', userList, {})
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Users', null, {})
+    await queryInterface.bulkDelete('users', null, {})
   }
 };

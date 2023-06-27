@@ -16,12 +16,12 @@ router.get('/check/new', adminController.getNewCheckPage)
 router.get('/check/edit', adminController.getEditCheckPage)
 
 // 擊球及扣款明細
-router.get('/details', adminController.getAdminDetailsPage)
+router.get('/details', adminController.getDetailsPage)
 router.get('/details/new', adminController.getNewDetailsPage)
 router.get('/details/edit', adminController.getEditDetailsPage)
 
 // 會員好禮
-router.get('/gifts', adminController.getGiftPage)
+router.get('/gifts', adminController.getGiftsPage)
 router.get('/gifts/new', adminController.getNewGiftPage)
 router.get('/gifts/edit', adminController.getEditGiftPage)
 
@@ -43,10 +43,10 @@ router.delete('/members/:id/', adminController.deleteMember)
 
 
 // 球場資訊
-router.get('/coursies', adminController.getAdminCoursiesPage)
+router.get('/coursies', adminController.getCoursiesPage)
 router.get('/coursies/new', adminController.getNewCoursePage)
 router.get('/coursies/edit', adminController.getEditCoursePage)
 // 會員logs
-router.get('/logs', adminController.getAdminLogs)
+router.get('/logs', adminController.getLogsPage)
 
 module.exports = router

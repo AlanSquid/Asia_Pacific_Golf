@@ -10,25 +10,33 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      User.belongsTo(models.Class)
+      User.hasMany(models.BookingOrder)
+      User.hasMany(models.CheckOrder)
+      User.hasMany(models.Detail)
     }
   }
   User.init({
-    member_id: DataTypes.STRING,
+    memberId: DataTypes.STRING,
     name: DataTypes.STRING,
     account: DataTypes.STRING,
-    isMale: DataTypes.BOOLEAN,
-    team: DataTypes.STRING,
-    balance: DataTypes.INTEGER,
-    point: DataTypes.INTEGER,
-    gift: DataTypes.INTEGER,
-    member_since: DataTypes.STRING,
-    member_expire: DataTypes.STRING,
-    text: DataTypes.STRING,
+    gender: DataTypes.BOOLEAN,
+    phone: DataTypes.STRING,
+    address: DataTypes.STRING,
+    personId: DataTypes.STRING,
+    passportNum: DataTypes.STRING,
+    salesRep: DataTypes.STRING,
+    point: DataTypes.STRING,
+    gift: DataTypes.STRING,
+    memberSince: DataTypes.DATEONLY,
+    memberExpire: DataTypes.DATEONLY,
+    membership: DataTypes.STRING,
+    description: DataTypes.STRING,
     isAdmin: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'User',
+    tableName: 'users',
+    underscored: true
   });
   return User;
 };

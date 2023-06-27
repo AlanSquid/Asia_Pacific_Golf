@@ -12,7 +12,8 @@
         </div>
         <div class="col-3">
           <div class="item d-flex flex-column">
-            <a href="/admin/check" class="btn btn-secondary mb-2 text-nowrap" style="width: 8vw; min-width: 5rem;">回上頁</a>
+            <a href="/admin/check" class="btn btn-secondary mb-2 text-nowrap"
+              style="width: 8vw; min-width: 5rem;">回上頁</a>
           </div>
         </div>
       </div>
@@ -22,9 +23,9 @@
   <div class="row text-center mt-3">
     <div class="col-10 col-md-6 m-auto">
       <form action="/admin/checks" method="POST">
-        <!-- 姓名 -->
+        <!-- 會員編號 -->
         <div class="input-group mb-3">
-          <span class="input-group-text" id="name">姓名</span>
+          <span class="input-group-text" id="name">會員編號</span>
           <input type="text" class="form-control" aria-label="name" aria-describedby="name" required>
         </div>
         <!-- 日期 -->
@@ -59,18 +60,24 @@
         </div>
         <!-- 結帳名單 -->
         <div class="input-group mb-3">
-          <span class="input-group-text">名單</span>
+          <span class="input-group-text">結帳名單</span>
           <textarea class="form-control" aria-label="list" style="height: 13vh;" required></textarea>
         </div>
-        <!-- 狀態 下拉式選單 -->
+        <!-- 結帳狀態 下拉式選單 -->
         <div class="input-group mb-3">
-          <span class="input-group-text" id="state">狀態</span>
+          <span class="input-group-text" id="state">結帳狀態</span>
           <select class="form-select" aria-label="state" required>
             <option selected>Open this select menu</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
+        </div>
+        <!-- 說明 -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="state_description">說明</span>
+          <input type="text" class="form-control" aria-label="state_description" aria-describedby="state_description"
+            required>
         </div>
         <!-- 備註 -->
         <div class="input-group mb-3">
