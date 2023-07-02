@@ -79,6 +79,8 @@
       },
       // 分頁器
       paging: true,
+      // 一頁顯示幾筆資料
+      aLengthMenu: [50, 100],
       // 滾軸頁面
       scrollY: 400,
       // 關鍵字搜尋
@@ -95,16 +97,16 @@
         type: 'GET'
       },
       columns: [
-        { data: "member_id" },
+        { data: "memberId" },
         { data: "name" },
         { data: "account" },
-        { data: "isMale" },
-        { data: "member_since" },
-        { data: "member_expire" },
-        { data: "ClassId" },
-        { data: "text" },
+        { data: "gender" },
+        { data: "memberSince" },
+        { data: "memberExpire" },
+        { data: "membership" },
+        { data: "description" },
         {
-          data: "id",
+          data: "editAndDeleteBtn",
           render: function (id) {
             const html = ` <div class="d-flex">
                 <a href="/admin/members/${id}/edit" class="btn btn-info">修改</a>

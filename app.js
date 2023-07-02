@@ -40,20 +40,12 @@ usePassport(app)
 // flash的使用與設定
 app.use(flash())
 app.use((req, res, next) => {
-  res.locals.member_id = req.body.member_id
-  res.locals.name = req.body.name
-  res.locals.account = req.body.account
-  res.locals.isMale = req.body.isMale
-  res.locals.member_since = req.body.member_since
-  res.locals.member_expire = req.body.member_expire
-  res.locals.member_class = req.body.member_class
-  res.locals.text = req.body.text
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
   res.locals.success_msg = req.flash('success_msg')  // 設定 success_msg 訊息
   res.locals.warning_msg = req.flash('warning_msg')  // 設定 warning_msg 訊息
   res.locals.login_error = req.flash('error') // 設定passport提供的錯誤提示訊息
-  res.locals.formErrors = res.formErrors
+  res.locals.formErrors = res.formErrors // 表單錯誤訊息
   next()
 })
 

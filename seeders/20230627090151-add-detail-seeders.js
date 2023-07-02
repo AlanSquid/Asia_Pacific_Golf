@@ -16,8 +16,8 @@ module.exports = {
 
     const details = Array.from({ length: users.length * 10 }, (_, i) => ({
       item: faker.lorem.words({ min: 0, max: 1 }),
-      User_id: users[i % users.length].id,
-      Course_id: coursies[Math.floor(Math.random() * coursies.length)].id,
+      user_id: users[i % users.length].id,
+      course_id: coursies[Math.floor(Math.random() * coursies.length)].id,
       date: faker.date.anytime(),
       team: `球隊${Math.floor(Math.random() * 10) + 1}`,
       value: faker.number.int({ min: -10000, max: 10000 }),

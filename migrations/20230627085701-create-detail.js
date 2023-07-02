@@ -27,7 +27,7 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
-      User_id: {
+      user_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -35,7 +35,7 @@ module.exports = {
           key: 'id'
         }
       },
-      Course_id: {
+      course_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

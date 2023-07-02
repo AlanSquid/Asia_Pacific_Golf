@@ -4,7 +4,8 @@
       <div class="row text-center h-100">
         <div class="col-3 pt-3">
           <div class="item d-flex justify-content-center align-items-center">
-            <h5>管理員</h5>
+            <h5>管理員 <%= user.name%>
+            </h5>
           </div>
         </div>
         <div class="col-6 pt-3">
@@ -22,76 +23,94 @@
 
   <div class="row text-center mt-3">
     <div class="col-10 col-md-6 m-auto">
-      <form action="/reservations/booking" method="POST">
-        <!-- 日期 -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="date">日期</span>
-          <input type="date" class="form-control" aria-label="date" aria-describedby="date" required>
-        </div>
-        <!-- 球場 下拉式選單 -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="course">球場</span>
-          <select class="form-select" aria-label="course" required>
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-        </div>
-        <!-- 開球時間 -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">開球時間</span>
-          <input type="time" class="form-control" aria-label="game_begin" required>
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">結束時間</span>
-          <input type="time" class="form-control" aria-label="game_begin" required>
-        </div>
+      <%- include form-message.ejs %>
+        <form action="/admin/booking/<%= id %>?_method=PUT" method="POST">
+          <!-- 會員編號 -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="memberId">會員編號</span>
+            <input type="text" name="memberId" class="form-control" aria-label="memberId" aria-describedby="memberId"
+              value="<%= memberId %>" readonly>
+          </div>
+          <!-- 姓名 -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="name">姓名</span>
+            <input type="text" name="name" class="form-control" aria-label="name" aria-describedby="name"
+              value="<%= name %>" readonly>
+          </div>
 
-        <!-- 球隊 -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="team">球隊</span>
-          <input type="text" class="form-control" aria-label="team" aria-describedby="team" required>
-        </div>
-        <!-- 組數 -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="group">組數</span>
-          <input type="text" class="form-control" aria-label="group" aria-describedby="group" required>
-        </div>
-        <!-- 名單 -->
-        <div class="input-group mb-3">
-          <span class="input-group-text">名單</span>
-          <textarea class="form-control" aria-label="list" style="height: 13vh;" required></textarea>
-        </div>
-        <!-- 聯絡人 -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="contact_person">聯絡人</span>
-          <input type="text" class="form-control" aria-label="contact_person" aria-describedby="contact_person"
-            required>
-        </div>
-        <!-- 電話 -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="phone">電話</span>
-          <input type="phone" class="form-control" aria-label="phone" aria-describedby="phone" required>
-        </div>
-        <!-- 狀態 下拉式選單 -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="state">訂場狀態</span>
-          <select class="form-select" aria-label="state" required>
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-        </div>
+          <!-- 日期 -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="date">日期</span>
+            <input type="date" name="date" class="form-control" aria-label="date" aria-describedby="date"
+              value="<%= date %>">
+          </div>
+          <!-- 球場 下拉式選單 -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="course">球場</span>
+            <select class="form-select" aria-label="course" name="CourseId">
+              <option>請選擇球場</option>
+              <% for (let i = 0; i < coursies.length; i++) {%>
+                <option value="<%= coursies[i].id %>" <% if(CourseId == coursies[i].id){ %>selected<%}%>><%= coursies[i].name %></option>
+              <%}%>
+            </select>
+          </div>
+          <!-- 開球時間 -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">開球時間_起</span>
+            <input type="time" name="gameBeginStart" class="form-control" aria-label="gameBeginStart"
+              value="<%= gameBeginStart %>">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">開球時間_迄</span>
+            <input type="time" name="gameBeginEnd" class="form-control" aria-label="gameBeginEnd"
+              value="<%= gameBeginEnd %>">
+          </div>
 
-        <div class="submit-back d-flex justify-content-end mb-3">
-          <button type="submit" class="btn btn-primary text-nowrap" style="width: 8vw; min-width: 5rem;">修改</button>
+          <!-- 球隊 -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="team">球隊</span>
+            <input type="text" name="team" class="form-control" aria-label="team" aria-describedby="team"
+              value="<%= team %>">
+          </div>
+          <!-- 組數 -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="group">組數</span>
+            <input type="number" name="group" class="form-control" aria-label="group" aria-describedby="group"
+              value="<%= group %>">
+          </div>
+          <!-- 名單 -->
+          <div class="input-group mb-3">
+            <span class="input-group-text">名單</span>
+            <textarea class="form-control" name="bookingList" aria-label="list" style="height: 13vh;"><%= bookingList %></textarea>
+          </div>
+          <!-- 聯絡人 -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="contactPerson">聯絡人</span>
+            <input type="text" name="contactPerson" class="form-control" aria-label="contactPerson"
+              aria-describedby="contactPerson" value="<%= contactPerson %>">
+          </div>
+          <!-- 電話 -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="phone">電話</span>
+            <input type="phone" name="phone" class="form-control" aria-label="phone" aria-describedby="phone"
+              value="<%= phone %>">
+          </div>
+          <!-- 狀態 下拉式選單 -->
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="state">訂場狀態</span>
+            <select class="form-select" aria-label="state" name="BookingStateId">
+              <% for (let i = 0; i < bookingStates.length; i++) {%>
+                <option value="<%= bookingStates[i].id%>" <% if(BookingStateId == bookingStates[i].id){ %>selected<%}%>><%= bookingStates[i].name%></option>
+              <% } %>
+            </select>
+          </div>
 
-          <button type="button" class="ms-3 btn btn-secondary text-nowrap" style="width: 8vw; min-width: 5rem;"
-            onclick="history.back()">關閉</button>
-        </div>
-      </form>
+          <div class="submit-back d-flex justify-content-end mb-3">
+            <button type="submit" class="btn btn-primary text-nowrap" style="width: 8vw; min-width: 5rem;" onclick="return confirm('是否確定要修改訂單?')">修改</button>
+
+            <a href="/admin/booking" class="ms-3 btn btn-secondary text-nowrap" style="width: 8vw; min-width: 5rem;">關閉</a>
+          </div>
+        </form>
     </div>
   </div>
 </div>

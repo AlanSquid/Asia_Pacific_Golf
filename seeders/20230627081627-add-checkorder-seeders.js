@@ -2,7 +2,6 @@
 
 const { faker } = require('@faker-js/faker')
 
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -24,13 +23,14 @@ module.exports = {
 
     const checkOrders = Array.from({ length: users.length * 10 }, (_, i) => (
       {
-        User_id: users[i % users.length].id,
-        Course_id: coursies[Math.floor(Math.random() * coursies.length)].id,
-        CheckState_id: checkStates[Math.floor(Math.random() * checkStates.length)].id,
+        user_id: users[i % users.length].id,
+        course_id: coursies[Math.floor(Math.random() * coursies.length)].id,
+        check_state_id: checkStates[Math.floor(Math.random() * checkStates.length)].id,
+        date: faker.date.anytime(),
         game_begin: faker.date.anytime(),
         team: `球隊${Math.floor(Math.random() * 10) + 1}`,
         group: faker.number.int({ min: 1, max: 4 }),
-        check_list: `${faker.person.firstName()}, ${faker.person.firstName()}, ${faker.person.firstName()},${faker.person.firstName()}`,
+        check_list: `${faker.person.firstName()}, ${faker.person.firstName()}, ${faker.person.firstName()}, ${faker.person.firstName()}`,
         state_description: checkState[Math.floor(Math.random() * 3)],
         description: faker.lorem.words({ min: 0, max: 2 }),
         created_at: new Date(),

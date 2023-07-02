@@ -19,15 +19,17 @@ module.exports = {
     )
 
     const bookingOrders = Array.from({ length: users.length * 5 }, (_, i) => ({
-      User_id: users[i % users.length].id,
-      Course_id: coursies[Math.floor(Math.random() * coursies.length)].id,
-      BookingState_id: bookingStates[Math.floor(Math.random() * bookingStates.length)].id,
+      user_id: users[i % users.length].id,
+      course_id: coursies[Math.floor(Math.random() * coursies.length)].id,
+      booking_state_id: bookingStates[Math.floor(Math.random() * bookingStates.length)].id,
       date: faker.date.anytime(),
       game_begin_start: faker.date.anytime(),
       game_begin_end: faker.date.anytime(),
       team: `球隊${Math.floor(Math.random() * 10) + 1}`,
       group: faker.number.int({ min: 1, max: 4 }),
-      booking_list: `${faker.person.firstName()}, ${faker.person.firstName()}, ${faker.person.firstName()},${faker.person.firstName()}`,
+      booking_list: `${faker.person.firstName()}, ${faker.person.firstName()}, ${faker.person.firstName()}, ${faker.person.firstName()}`,
+      contact_person: faker.person.firstName(),
+      phone: faker.phone.number('09########'),
       description: faker.lorem.words({ min: 0, max: 2 }),
       created_at: new Date(),
       updated_at: new Date()

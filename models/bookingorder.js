@@ -22,6 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     team: DataTypes.STRING,
     group: DataTypes.INTEGER,
     bookingList: DataTypes.STRING,
+    contactPerson: DataTypes.STRING,
+    phone: DataTypes.STRING,
     description: DataTypes.STRING
   }, {
     sequelize,

@@ -4,7 +4,7 @@
       <div class="row text-center h-100">
         <div class="col-3 pt-5">
           <div class="item d-flex justify-content-center align-items-center">
-            <h5>管理員 <%= name %>
+            <h5>管理員 <%= user.name%>
             </h5>
           </div>
         </div>
@@ -21,12 +21,12 @@
     </div>
   </div>
 
-  <form action="/admin/booking" method="POST">
+  <form>
     <div class="row g-4 mt-1">
       <!-- 會員編號 -->
       <div class="col-6 col-sm-4 col-md-3">
-        <label for="member_id" class="form-label">會員編號</label>
-        <input type="text" class="form-control" id="member_id">
+        <label for="memberId" class="form-label">會員編號</label>
+        <input type="text" name="memberId" class="form-control" id="memberId">
       </div>
       <!-- 姓名 -->
       <div class="col-6 col-sm-4 col-md-3">
@@ -35,23 +35,23 @@
       </div>
       <!-- 日期 始 -->
       <div class="col-6 col-sm-4 col-md-3">
-        <label for="date_start" class="form-label">從</label>
-        <input type="date" class="form-control" id="date_start">
+        <label for="startDate" class="form-label">從</label>
+        <input type="date" class="form-control" id="startDate">
       </div>
       <!-- 日期 末 -->
       <div class="col-6 col-sm-4 col-md-3">
-        <label for="date_end" class="form-label">至</label>
-        <input type="date" class="form-control" id="date_end">
+        <label for="endDate" class="form-label">至</label>
+        <input type="date" class="form-control" id="endDate">
 
       </div>
       <!-- 球場 下拉式-->
       <div class="col-6 col-sm-4 col-md-3">
         <label for="course" class="form-label">球場</label>
-        <select class="form-select" aria-label="course">
-          <option selected>請選擇球場</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+        <select id="course" class="form-select" aria-label="course">
+          <option selected>所有球場</option>
+          <% for (let i = 0; i < coursies.length; i++) {%>
+            <option value="<%= coursies[i].id%>"><%= coursies[i].name%></option>
+          <% } %>
         </select>
       </div>
       <!-- 球隊 -->
@@ -61,26 +61,27 @@
       </div>
       <!-- 聯絡人 -->
       <div class="col-6 col-sm-4 col-md-3">
-        <label for="contact_person" class="form-label">聯絡人</label>
-        <input type="text" class="form-control" id="contact_person">
+        <label for="contactPerson" class="form-label">聯絡人</label>
+        <input type="text" name="contactPerson" class="form-control" id="contactPerson">
       </div>
 
       <!-- 狀態 下拉式 -->
       <div class="col-6 col-sm-4 col-md-3">
-        <label for="contact_person" class="form-label">狀態</label>
-        <select class="form-select" aria-label="state">
-          <option selected>全部</option>
-          <option value="0">未訂場</option>
-          <option value="1">已訂場</option>
+        <label for="state" class="form-label">狀態</label>
+        <select id="state" class="form-select" aria-label="state">
+          <option selected>所有狀態</option>
+          <% for (let i = 0; i < bookingStates.length; i++) {%>
+            <option value="<%= bookingStates[i].id%>"><%= bookingStates[i].name%></option>
+          <% } %>
         </select>
       </div>
     </div>
-    <a href="/admin/booking/" class="d-grid btn btn-primary mt-3 m-auto">
+    <button id="searchBtn" type="button" class="d-grid btn btn-primary mt-3 m-auto w-100" onclick="search()">
       <h5>訂場查詢</h5>
-    </a>
+    </button>
   </form>
 
-  <a href="/admin/booking/new" class="d-grid btn btn-primary mt-3 mb-2  m-auto">
+  <a href="/admin/booking/new" class="d-grid btn btn-primary mt-3 mb-2 m-auto">
     <h5>新增訂場</h5>
   </a>
 
@@ -99,6 +100,7 @@
         <th>聯絡人</th>
         <th>聯絡人電話</th>
         <th>訂場狀態</th>
+        <th>編輯</th>
       </tr>
     </thead>
     <tbody>
@@ -106,57 +108,160 @@
   </table>
 </div>
 
-<script>
-  $(document).ready(function () {
-    $('#myTable').DataTable({
-      // 中文化
-      language: {
-        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
-      },
-      // 分頁器
-      paging: true,
-      // 滾軸頁面
-      scrollY: 400,
-      // 關鍵字搜尋
-      searching: false,
-      // 排序
-      ordering: false,
-      // 顯示加載中
-      processing: true,
-      // 開啟伺服器端分頁
-      serverSide: true,
+<!-- Modal -->
+<div class="modal fade" id="seeMore" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalLabel">訂場名單</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-      ajax: {
-        url: `http://localhost:3000/admin/api/get_booking`,
-        type: 'GET'
-      },
-      columns: [
-        { data: "member_id" },
-        { data: "name" },
-        { data: "date" },
-        { data: "course" },
-        { data: "game_begin_start" },
-        { data: "game_begin_end" },
-        { data: "team" },
-        { data: "group" },
-        { data: "booking_list" },
-        { data: "contact_person" },
-        { data: "phone" },
-        { data: "booking_state" },
-        {
-          data: "id",
-          render: function (id) {
-            const html = ` <div class="d-flex">
-                <a href="/admin/booking/${id}/edit" class="btn btn-info">修改</a>
-                <form action="/admin/members/${id}?_method=DELETE" method="POST">
-                  <button type="submit" class="del-btn btn btn-danger ms-2" onclick="return confirm('是否確定要刪除會員?')">刪除</button>
-                </form>
-                </div>`
-            return html
+<script>
+  showTable()
+  const BASE_URL = `http://localhost:3000`
+
+  function search() {
+    $('#myTable').DataTable().destroy()
+    $('#myTable').empty()
+    let tableHead = `<thead>
+      <tr>
+        <th>會員編號</th>
+        <th>姓名</th>
+        <th>日期</th>
+        <th>球場</th>
+        <th>開球時間_起</th>
+        <th>開球時間_迄</th>
+        <th>球隊</th>
+        <th>組數</th>
+        <th>名單</th>
+        <th>聯絡人</th>
+        <th>聯絡人電話</th>
+        <th>訂場狀態</th>
+        <th>編輯</th>
+      </tr>
+    </thead>`
+    $('#myTable').append(tableHead)
+    showTable()
+  }
+
+  function showTable() {
+    const memberId = document.querySelector('#memberId').value
+    const name = document.querySelector('#name').value
+    const startDate = document.querySelector('#startDate').value
+    const endDate = document.querySelector('#endDate').value
+    const course = document.querySelector('#course').value
+    const team = document.querySelector('#team').value
+    const contactPerson = document.querySelector('#contactPerson').value
+    const state = document.querySelector('#state').value
+    $(document).ready(function () {
+      $('#myTable').DataTable({
+        // 中文化
+        language: {
+          url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
+        },
+        // 分頁器
+        paging: true,
+        // 一頁顯示幾筆資料
+        aLengthMenu: [50, 100, 200],
+        // 滾軸頁面
+        scrollY: 400,
+        // 關鍵字搜尋
+        searching: false,
+        // 排序
+        ordering: false,
+        // 顯示加載中
+        processing: true,
+        // 開啟伺服器端分頁
+        serverSide: true,
+        // 重新獲取
+        retrieve: true,
+
+        ajax: {
+          url: `${BASE_URL}/admin/api/get_booking`,
+          type: 'GET',
+          data: function (d) {
+            return $.extend({}, d, {
+              memberId,
+              name,
+              startDate,
+              endDate,
+              course,
+              team,
+              contactPerson,
+              state
+            })
           }
-        }
-      ]
+        },
+
+        columns: [
+          { data: "memberId" },
+          { data: "name" },
+          { data: "date" },
+          { data: "course" },
+          { data: "gameBeginStart" },
+          { data: "gameBeginEnd" },
+          { data: "team" },
+          { data: "group" },
+          {
+            data: "bookingList",
+            render: seeMoreBtn
+          },
+          { data: "contactPerson" },
+          { data: "phone" },
+          { data: "bookingState" },
+          {
+            data: "editAndDeleteBtn",
+            render: editAndDeleteBtn
+          }
+        ]
+      })
     })
-  })
+  }
+  // 渲染修改與刪除的按鍵
+  function editAndDeleteBtn(id) {
+    const html = ` 
+      <div class="d-flex">
+        <a href="/admin/booking/${id}/edit" class="btn btn-info">修改</a>
+        <form action="/admin/booking/${id}?_method=DELETE" method="POST">
+          <button type="submit" class="del-btn btn btn-danger ms-2" onclick="return confirm('是否確定要刪除會員?')">刪除</button>
+        </form>
+      </div>`
+    return html
+  }
+
+  // 渲染"查看"按鍵
+  function seeMoreBtn(id) {
+    const html = `
+    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#seeMore" onclick='showBookingList(${id})'>
+      查看
+    </button>`
+    return html
+  }
+  // 秀出Modal
+  function showBookingList(id) {
+    const modalBody = document.querySelector('.modal-body')
+    $.ajax({
+      url: 'http://localhost:3000/admin/api/get_booking_list',
+      method: 'GET',
+      dataType: 'json',
+      data: { id },
+      success: function (response) {
+        console.log(response)
+        modalBody.innerHTML = response
+      },
+      error: function (thrownError) {
+        console.log(thrownError)
+      }
+    })
+  }
 
 </script>

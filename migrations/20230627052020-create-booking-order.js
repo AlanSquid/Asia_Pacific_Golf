@@ -10,31 +10,33 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       date: {
-        allowNull: false,
         type: Sequelize.DATEONLY
       },
       game_begin_start: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       game_begin_end: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       team: {
         type: Sequelize.STRING
       },
       group: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       booking_list: {
         type: Sequelize.STRING
       },
+      contact_person: {
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
       description: {
         type: Sequelize.STRING
       },
-      User_id: {
+      user_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -42,7 +44,7 @@ module.exports = {
           key: 'id'
         }
       },
-      Course_id: {
+      course_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -50,7 +52,7 @@ module.exports = {
           key: 'id'
         }
       },
-      BookingState_id: {
+      booking_state_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

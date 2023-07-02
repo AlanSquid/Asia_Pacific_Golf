@@ -4,11 +4,24 @@ const adminController = require('../../controllers/admin-controller')
 
 // Admin首頁
 router.get('/', adminController.getAdminIndex)
-
-// 協助訂場
+// GET協助訂場頁面
 router.get('/booking', adminController.getBookingPage)
+// 獲取協助訂場的table資料
+router.get('/api/get_booking', adminController.getBookingDatas)
+// 查看訂場名單
+router.get('/api/get_booking_list', adminController.getBookingList)
+
+// GET新增訂場頁面
 router.get('/booking/new', adminController.getNewBookingPage)
-router.get('/booking/edit', adminController.getEditBookingPage)
+// POST新增訂場
+router.post('/booking', adminController.postNewBooking)
+
+// GET修改訂場頁面
+router.get('/booking/:id/edit', adminController.getEditBookingPage)
+// PUT修改訂場
+router.put('/booking/:id', adminController.putBooking)
+// DELETE刪除訂場
+router.delete('/booking/:id', adminController.deleteBooking)
 
 // 已訂場需結帳
 router.get('/check', adminController.getCheckPage)

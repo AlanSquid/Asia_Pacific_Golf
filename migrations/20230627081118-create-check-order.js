@@ -9,15 +9,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      date: {
+        type: Sequelize.DATEONLY
+      },
       game_begin: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       team: {
         type: Sequelize.STRING
       },
       group: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       check_list: {
@@ -29,7 +30,7 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
-      User_id: {
+      user_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -37,7 +38,7 @@ module.exports = {
           key: 'id'
         }
       },
-      Course_id: {
+      course_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -45,7 +46,7 @@ module.exports = {
           key: 'id'
         }
       },
-      CheckState_id: {
+      check_state_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

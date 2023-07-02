@@ -23,7 +23,7 @@
           <div class="input-group mb-3">
             <span class="input-group-text" id="member_id">會員編號</span>
             <input type="text" name="member_id" class="form-control" aria-label="member_id" aria-describedby="member_id"
-              value="<%= user.member_id %>">
+              value="<%= user.memberId %>">
           </div>
           <!-- 姓名 -->
           <div class="input-group mb-3">
@@ -42,41 +42,41 @@
             <span class="input-group-text" id="gender">性別</span>
             <div class="check-group ms-3 pt-2">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="isMale" id="male" value="1"
-                  <%if(user.isMale==1){%>checked
+                <input class="form-check-input" type="radio" name="gender" id="male" value="1"
+                  <%if(user.gender==1){%>checked
                 <%}%>>
                   <label class="form-check-label" for="male">男</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="isMale" id="female" value="0"
-                  <%if(user.isMale==0){%>checked<%}%>>
+                <input class="form-check-input" type="radio" name="gender" id="female" value="0"
+                  <%if(user.gender==0){%>checked<%}%>>
                   <label class="form-check-label" for="female">女</label>
               </div>
             </div>
           </div>
           <!-- 入會時間 -->
           <div class="input-group mb-3">
-            <span class="input-group-text" id="member_since">入會時間</span>
-            <input type="date" name="member_since" class="form-control" aria-label="member_since"
-              aria-describedby="member_since" value="<%= user.member_since%>">
+            <span class="input-group-text" id="memberSince">入會時間</span>
+            <input type="date" name="memberSince" class="form-control" aria-label="memberSince"
+              aria-describedby="memberSince" value="<%= user.memberSince%>">
           </div>
           <!-- 會籍到期日 -->
           <div class="input-group mb-3">
-            <span class="input-group-text" id="member_expire">會籍到期日</span>
-            <input type="date" name="member_expire" class="form-control" aria-label="member_expire"
-              aria-describedby="member_expire" value="<%= user.member_expire%>">
+            <span class="input-group-text" id="memberExpire">會籍到期日</span>
+            <input type="date" name="memberExpire" class="form-control" aria-label="memberExpire"
+              aria-describedby="memberExpire" value="<%= user.memberExpire%>">
           </div>
           <!-- 會籍類型 -->
           <div class="input-group mb-3">
-            <span class="input-group-text" id="member_class">會籍類型</span>
-            <input type="text" name="classId" class="form-control" aria-label="member_class"
-              aria-describedby="member_class" value="<%= user.Class.name%>">
+            <span class="input-group-text" id="membership">會籍類型</span>
+            <input type="text" name="membership" class="form-control" aria-label="membership"
+              aria-describedby="membership" value="<%= user.membership%>">
           </div>
           <!-- 備註 -->
           <div class="input-group mb-3">
             <span class="input-group-text">備註</span>
-            <textarea name="text" class="form-control" aria-label="text"
-              style="height: 13vh;"><%= user.text%></textarea>
+            <textarea name="description" class="form-control" aria-label="text"
+              style="height: 13vh;"><%= user.description%></textarea>
           </div>
           <div class="submit-back d-flex justify-content-end mb-3">
             <button type="submit" class="btn btn-primary text-nowrap" style="width: 8vw; min-width: 5rem;"

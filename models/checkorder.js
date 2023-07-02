@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   CheckOrder.init({
+    date: DataTypes.DATEONLY,
     gameBegin: DataTypes.DATE,
     team: DataTypes.STRING,
     group: DataTypes.INTEGER,
